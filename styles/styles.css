@@ -1,3 +1,188 @@
-.wp-block-heading, footer.edit-link {
+@charset "UTF-8";
+/*STYLES PERSONNALISÉS*/
+/* {
+    font-family: "Space Mono", sans-serif;//Font sur tout le site
+}*/
+.primary-navigation {
+  margin-right: 146px;
+}
+.primary-navigation .menu-container ul {
+  display: flex;
+  flex-direction: row;
+  gap: 45px;
+}
+.primary-navigation .menu-container ul .menu-item > a {
+  text-decoration: none;
+  font-size: 16px;
+  font-family: "Space Mono", sans-serif;
+}
+
+footer#colophon.site-footer {
+  margin: 0;
+  max-width: 1440px;
+  padding: 0;
+}
+
+nav.footer-navigation {
+  margin: 0;
+  border-top: 1px solid #000000;
+}
+
+.footer-navigation-wrapper {
+  display: flex;
+  gap: 86px;
+}
+.footer-navigation-wrapper li a {
+  font-family: "Space Mono", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  text-decoration: none;
+}
+
+.wp-block-heading {
   display: none;
+}
+
+#page.site {
+  font-weight: 400;
+  font-style: normal;
+  width: 100%;
+  max-width: 1440px;
+  margin: auto;
+  background-color: #ffffff;
+}
+#page.site header {
+  height: 80px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+#page.site header .header-logo {
+  height: 14px;
+  margin: 31px 0px 35px 146px;
+}
+#page.site header .burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 30px;
+  height: 40px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+#page.site header .burger span {
+  display: block;
+  width: 100%;
+  height: 3px;
+  margin: 0;
+  background-color: #000000;
+  border-radius: 5px;
+}
+#page.site .header-image {
+  position: relative;
+  background-image: url("https://motaphoto.local/wp-content/uploads/2026/05/nathalie-11-scaled.webp");
+  background-size: cover;
+  background-position: center;
+  aspect-ratio: 2560/1709;
+  width: 100%;
+  max-width: 1440px;
+}
+#page.site .header-image .header-title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: clamp(24px, 6vw, 96px);
+  font-weight: 700;
+  font-style: italic;
+  color: transparent;
+  -webkit-text-stroke: 0.17vw rgb(255, 255, 255);
+  text-align: center;
+  white-space: nowrap;
+}
+
+#contact-modal {
+  position: fixed;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 597px;
+  height: auto;
+  overflow: hidden;
+  border: 5px solid #000000;
+  background-color: #ffffff;
+  font-family: "Poppins";
+}
+#contact-modal .modal-header {
+  width: 885.96px;
+  margin: 18px 0 45.95px 0;
+}
+#contact-modal #wpcf7-f27-o1 {
+  width: 100%;
+}
+#contact-modal #wpcf7-f27-o1 form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+#contact-modal #wpcf7-f27-o1 form label {
+  font-family: "Poppins", sans-serif;
+  font-size: 12px;
+  font-style: medium;
+  font-weight: 500;
+}
+#contact-modal #wpcf7-f27-o1 form input, #contact-modal #wpcf7-f27-o1 form textarea {
+  margin-bottom: 24px;
+  border: 1px solid #000000;
+  border-radius: 10px;
+}
+#contact-modal #wpcf7-f27-o1 form textarea {
+  width: 320px;
+}
+#contact-modal #wpcf7-f27-o1 form input[type=submit] {
+  width: 320px;
+  margin-left: 70px;
+  padding: 16px 0;
+  background-color: #d8d8d8;
+  font-family: "Space Mono", sans-serif;
+  color: #000000;
+}
+#contact-modal form .wpcf7-response-output {
+  display: none;
+}
+
+@media (max-width: 850px) {
+  #page.site header .burger {
+    display: flex;
+    margin-right: 6vw;
+  }
+  #page.site header .primary-navigation {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    background: #d8d8d8;
+    display: none;
+  }
+  #page.site header .primary-navigation.active {
+    display: block;
+  }
+  #page.site header .primary-navigation.active ul {
+    flex-direction: column;
+    padding: 20px;
+  }
+  #page.site header .header-logo {
+    margin: 31px 6vw 35px;
+  }
+  #page.site .header-image .header-title {
+    -webkit-text-stroke: 0.25vw rgb(255, 255, 255);
+  }
 }/*# sourceMappingURL=styles.css.map */

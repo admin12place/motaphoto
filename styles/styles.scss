@@ -1,3 +1,215 @@
-.wp-block-heading, footer.edit-link {
+/*STYLES PERSONNALISÉS*/
+//Definition de la charte couleurs
+    $black-black: #000000;
+    $grey-medium: #313144;
+    $red-red: #e00000;
+    $red-light: #fe5858;
+    $pink-light: #ffd6d6;
+    $grey-light: #c4c4c4;
+    $grey-cold-medium: #d8d8d8;
+    $grey-cold-light: #e5e5e5;
+    $white-white: #ffffff;
+//Fin
+
+/* {
+    font-family: "Space Mono", sans-serif;//Font sur tout le site
+}*/
+
+//*****************LES MENUS*************************
+
+.primary-navigation {//Menu principal
+    margin-right: 146px;
+    .menu-container ul{
+        display: flex;
+        flex-direction: row;
+        gap:45px;
+        .menu-item > a {
+        text-decoration: none;
+        font-size: 16px;
+        font-family: "Space Mono", sans-serif;
+        }
+    } 
+}
+
+footer#colophon.site-footer {
+    margin: 0;
+    max-width: 1440px;
+    padding: 0;
+}
+
+nav.footer-navigation {
+    margin: 0;
+    border-top: 1px solid $black-black;
+}
+
+.footer-navigation-wrapper {//menu secondaire
+    display: flex;
+    gap: 86px;
+    li a {
+        font-family: "Space Mono", sans-serif;
+        font-size: 16px;
+        font-weight: 400;
+        text-decoration: none;
+    }
+}
+
+.wp-block-heading {//suppression du titre de page wp
     display: none;
+}
+
+//*********************LE HEADER*********************
+
+#page.site {
+    font-weight: 400;
+    font-style: normal;
+    width: 100%;
+    max-width: 1440px;
+    margin: auto;
+    background-color: $white-white;
+    header {
+        height: 80px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        .header-logo {
+            height: 14px;
+            margin: 31px 0px 35px 146px;
+        }
+        .burger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            gap: 5px;
+            width: 30px;
+            height: 40px;
+            padding: 0;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            span {
+                display: block;
+                width: 100%;
+                height: 3px;
+                margin: 0;
+                background-color: $black-black;
+                border-radius: 5px;
+            }
+        }
+    }
+    .header-image {
+        position: relative;
+        background-image: url("https://motaphoto.local/wp-content/uploads/2026/05/nathalie-11-scaled.webp");
+        background-size: cover;
+        background-position: center;
+        aspect-ratio: 2560 / 1709;
+        width: 100%;
+        max-width: 1440px;
+        .header-title {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: clamp(24px, 6vw, 96px);
+            font-weight: 700;
+            font-style: italic;
+            color: transparent;
+            -webkit-text-stroke: 0.17vw rgba(255,255,255,1);
+            text-align: center;
+            white-space: nowrap;
+        }
+    }
+}
+
+//***********************LA MODALE************************
+
+#contact-modal {
+    position: fixed;//positionnement
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 597px;
+    height: auto;
+    overflow: hidden;
+    border: 5px solid $black-black;
+    background-color: $white-white;
+    font-family: "Poppins";
+    .modal-header {
+        width: 885.96px;
+        margin: 18px 0 45.95px 0;
+    }
+    #wpcf7-f27-o1 {
+        width: 100%;
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            label {
+                font-family: "Poppins", sans-serif;
+                font-size: 12px;
+                font-style: medium;
+                font-weight: 500;
+            }
+            input, textarea {
+                margin-bottom: 24px;
+                border: 1px solid $black-black;
+                border-radius: 10px;
+            }
+            textarea {
+                width: 320px;
+            }
+            input[type="submit"] {
+                width: 320px;
+                margin-left: 70px;
+                padding: 16px 0;
+                background-color: $grey-cold-medium;
+                font-family: "Space Mono", sans-serif;
+                color: $black-black;
+            } 
+        }
+    }
+    form .wpcf7-response-output {
+        display: none;
+    }
+}
+
+//*********************MEDIA QUERIES**********************
+
+@media (max-width: 850px) {
+    #page.site {
+        header {
+            .burger {
+                display: flex;
+                margin-right: 6vw;
+            }
+            .primary-navigation {
+                position: absolute;
+                top:80px;
+                left: 0;
+                width: 100%;
+                background: $grey-cold-medium;
+                display: none;
+            }
+            .primary-navigation.active {
+                display: block;
+                ul {
+                    flex-direction: column;
+                    padding: 20px;
+                }
+            }
+            .header-logo {
+                margin: 31px 6vw 35px;
+            }
+        }
+        .header-image {
+            .header-title {
+                -webkit-text-stroke: 0.25vw rgba(255,255,255,1);
+            }
+        }
+    }
 }
