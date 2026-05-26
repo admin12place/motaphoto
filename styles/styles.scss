@@ -11,9 +11,7 @@
     $white-white: #ffffff;
 //Fin
 
-/* {
-    font-family: "Space Mono", sans-serif;//Font sur tout le site
-}*/
+/*GÉNÉRIQUES*/
 
 //*****************LES MENUS*************************
 
@@ -28,6 +26,7 @@
         font-size: 16px;
         font-family: "Space Mono", sans-serif;
         }
+
     } 
 }
 
@@ -75,6 +74,15 @@ nav.footer-navigation {
         .header-logo {
             height: 14px;
             margin: 31px 0px 35px 146px;
+        }
+        a {
+            transition: 0.5s;
+            &:hover {
+                text-decoration: none;
+                text-shadow: 2px 2px 5px #313144;
+                opacity: 0.75;
+                transition: 0.5s;
+            }
         }
         .burger {
             display: none;
@@ -124,15 +132,22 @@ nav.footer-navigation {
 //***********************LA MODALE************************
 
 #contact-modal {
+    display: flex;
     position: fixed;//positionnement
     top: 55%;
     left: 50%;
     transform: translate(-50%, -50%);
 
-    display: flex;
+    opacity: 1;
+    visibility: visible;
+    //transition: opacity 0.5s ease;
+    transition:
+        opacity 1s ease,
+        visibility 1s ease;
+
     flex-direction: column;
     align-items: center;
-    width: 597px;
+    width: clamp(450px, 38vw, 597px);
     height: auto;
     overflow: hidden;
     border: 5px solid $black-black;
@@ -140,15 +155,18 @@ nav.footer-navigation {
     font-family: "Poppins";
     .modal-header {
         width: 885.96px;
-        margin: 18px 0 45.95px 0;
+        height: auto;
+        margin: 18px 0 36px 0;
     }
     #wpcf7-f27-o1 {
         width: 100%;
-        form {
+        .wpcf7-form {
             display: flex;
             flex-direction: column;
             align-items: center;
-            width: 100%;
+            justify-content: space-around;
+            gap: 15px;
+            width: 263px;
             label {
                 font-family: "Poppins", sans-serif;
                 font-size: 12px;
@@ -156,16 +174,17 @@ nav.footer-navigation {
                 font-weight: 500;
             }
             input, textarea {
-                margin-bottom: 24px;
                 border: 1px solid $black-black;
                 border-radius: 10px;
+                width: 100%;
+                height: 40px;
             }
             textarea {
-                width: 320px;
+                height: 210px;
             }
             input[type="submit"] {
-                width: 320px;
-                margin-left: 70px;
+                width: 263px;
+                height: 50px;
                 padding: 16px 0;
                 background-color: $grey-cold-medium;
                 font-family: "Space Mono", sans-serif;
@@ -176,6 +195,15 @@ nav.footer-navigation {
     form .wpcf7-response-output {
         display: none;
     }
+}
+
+#contact-modal.hidden {
+    opacity: 0;
+    visibility: hidden;
+    transition:
+        opacity 1s ease,
+        visibility 1s ease;
+    
 }
 
 //*********************MEDIA QUERIES**********************

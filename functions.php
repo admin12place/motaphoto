@@ -32,4 +32,11 @@ function mota_enqueue_fonts() {//Les fonts importées depuis Google
 
 /**************************** */
 
+add_action( 'wp_enqueue_scripts', 'mota_enqueue_scripts_perso' );
+
+function mota_enqueue_scripts_perso() { //le js perso
+    wp_enqueue_script('scripts', get_stylesheet_directory_uri() . '/js/scripts.js',
+    filemtime(get_stylesheet_directory() . '/js/scripts.js'), null, true);
+};
+
 
