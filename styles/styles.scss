@@ -10,8 +10,68 @@
     $grey-cold-light: #e5e5e5;
     $white-white: #ffffff;
 //Fin
+//Intégration des polices
+@font-face {
+    font-family: 'SpaceMono';
+    src: url('../assets/fonts/SpaceMono-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'SpaceMono';
+    src: url('../assets/fonts/SpaceMono-Bold.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'SpaceMono';
+    src: url('../assets/fonts/SpaceMono-BoldItalic.woff2') format('woff2');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'SpaceMono';
+    src: url('../assets/fonts/SpaceMono-Italic.woff2') format('woff2');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('../assets/fonts/Poppins-Bold.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('../assets/fonts/Poppins-Italic.woff2') format('woff2');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('../assets/fonts/Poppins-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
 
 /*GÉNÉRIQUES*/
+
+ body *{
+    font-family: "SpaceMono", sans-serif!important;
+}
 
 //*****************LES MENUS*************************
 
@@ -22,11 +82,15 @@
         flex-direction: row;
         gap:45px;
         .menu-item > a {
-        text-decoration: none;
-        font-size: 16px;
-        font-family: "Space Mono", sans-serif;
+            text-decoration: none;
+            font-size: 16px;
+            &:hover {
+                text-decoration: none;
+                text-shadow: 2px 2px 5px #313144;
+                opacity: 0.75;
+                transition: 0.5s;
+            }
         }
-
     } 
 }
 
@@ -36,19 +100,23 @@ footer#colophon.site-footer {
     padding: 0;
 }
 
-nav.footer-navigation {
+nav.footer-navigation {//menu secondaire
     margin: 0;
     border-top: 1px solid $black-black;
-}
-
-.footer-navigation-wrapper {//menu secondaire
-    display: flex;
-    gap: 86px;
-    li a {
-        font-family: "Space Mono", sans-serif;
-        font-size: 16px;
-        font-weight: 400;
-        text-decoration: none;
+    .footer-navigation-wrapper {
+        display: flex;
+        gap: 8vw;
+        .menu-item > a {
+            font-size: 16px;
+            font-weight: 400;
+            text-decoration: none;
+            &:hover {
+                text-decoration: none;
+                text-shadow: 2px 2px 5px #313144;
+                opacity: 0.75;
+                transition: 0.5s;
+            }
+        }
     }
 }
 
@@ -75,15 +143,6 @@ nav.footer-navigation {
             height: 14px;
             margin: 31px 0px 35px 146px;
         }
-        a {
-            transition: 0.5s;
-            &:hover {
-                text-decoration: none;
-                text-shadow: 2px 2px 5px #313144;
-                opacity: 0.75;
-                transition: 0.5s;
-            }
-        }
         .burger {
             display: none;
             flex-direction: column;
@@ -107,7 +166,6 @@ nav.footer-navigation {
     }
     .header-image {
         position: relative;
-        background-image: url("https://motaphoto.local/wp-content/uploads/2026/05/nathalie-11-scaled.webp");
         background-size: cover;
         background-position: center;
         aspect-ratio: 2560 / 1709;
@@ -187,7 +245,6 @@ nav.footer-navigation {
                 height: 50px;
                 padding: 16px 0;
                 background-color: $grey-cold-medium;
-                font-family: "Space Mono", sans-serif;
                 color: $black-black;
             } 
         }

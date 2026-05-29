@@ -1,6 +1,59 @@
 @charset "UTF-8";
 /*STYLES PERSONNALISÉS*/
+@font-face {
+  font-family: "SpaceMono";
+  src: url("../assets/fonts/SpaceMono-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "SpaceMono";
+  src: url("../assets/fonts/SpaceMono-Bold.woff2") format("woff2");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "SpaceMono";
+  src: url("../assets/fonts/SpaceMono-BoldItalic.woff2") format("woff2");
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "SpaceMono";
+  src: url("../assets/fonts/SpaceMono-Italic.woff2") format("woff2");
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("../assets/fonts/Poppins-Bold.woff2") format("woff2");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("../assets/fonts/Poppins-Italic.woff2") format("woff2");
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("../assets/fonts/Poppins-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 /*GÉNÉRIQUES*/
+body * {
+  font-family: "SpaceMono", sans-serif !important;
+}
+
 .primary-navigation {
   margin-right: 146px;
 }
@@ -12,7 +65,12 @@
 .primary-navigation .menu-container ul .menu-item > a {
   text-decoration: none;
   font-size: 16px;
-  font-family: "Space Mono", sans-serif;
+}
+.primary-navigation .menu-container ul .menu-item > a:hover {
+  text-decoration: none;
+  text-shadow: 2px 2px 5px #313144;
+  opacity: 0.75;
+  transition: 0.5s;
 }
 
 footer#colophon.site-footer {
@@ -25,16 +83,20 @@ nav.footer-navigation {
   margin: 0;
   border-top: 1px solid #000000;
 }
-
-.footer-navigation-wrapper {
+nav.footer-navigation .footer-navigation-wrapper {
   display: flex;
-  gap: 86px;
+  gap: 8vw;
 }
-.footer-navigation-wrapper li a {
-  font-family: "Space Mono", sans-serif;
+nav.footer-navigation .footer-navigation-wrapper .menu-item > a {
   font-size: 16px;
   font-weight: 400;
   text-decoration: none;
+}
+nav.footer-navigation .footer-navigation-wrapper .menu-item > a:hover {
+  text-decoration: none;
+  text-shadow: 2px 2px 5px #313144;
+  opacity: 0.75;
+  transition: 0.5s;
 }
 
 .wp-block-heading {
@@ -60,15 +122,6 @@ nav.footer-navigation {
   height: 14px;
   margin: 31px 0px 35px 146px;
 }
-#page.site header a {
-  transition: 0.5s;
-}
-#page.site header a:hover {
-  text-decoration: none;
-  text-shadow: 2px 2px 5px #313144;
-  opacity: 0.75;
-  transition: 0.5s;
-}
 #page.site header .burger {
   display: none;
   flex-direction: column;
@@ -91,7 +144,6 @@ nav.footer-navigation {
 }
 #page.site .header-image {
   position: relative;
-  background-image: url("https://motaphoto.local/wp-content/uploads/2026/05/nathalie-11-scaled.webp");
   background-size: cover;
   background-position: center;
   aspect-ratio: 2560/1709;
@@ -166,7 +218,6 @@ nav.footer-navigation {
   height: 50px;
   padding: 16px 0;
   background-color: #d8d8d8;
-  font-family: "Space Mono", sans-serif;
   color: #000000;
 }
 #contact-modal form .wpcf7-response-output {

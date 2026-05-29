@@ -1,6 +1,6 @@
 <section id="contact-modal" class="hidden">
     <div class="modal-header">
-        <img class="logo-contact" src="<?php echo get_stylesheet_directory_uri() . '/images/contact-header.png'?>" 
+        <img class="logo-contact" src="<?php echo get_stylesheet_directory_uri() . '/images/contact-header-logo.png'?>" 
         alt="Logo du formulaire de contact"/>
     </div>
 

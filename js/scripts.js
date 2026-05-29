@@ -10,14 +10,11 @@ document.addEventListener('click', (e) => {
             contactModal.classList.remove('hidden');
         return
         }
-        
+
         if(
             !contactModal.classList.contains('hidden') &&
             !contactModal.contains(e.target)
         ) {
-    
             contactModal.classList.add('hidden');
-    
         }
-    
     });
