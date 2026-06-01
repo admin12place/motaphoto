@@ -54,6 +54,21 @@ body * {
   font-family: "SpaceMono", sans-serif !important;
 }
 
+.menu-item {
+  list-style: none;
+}
+.menu-item a {
+  text-decoration: none;
+  color: #000000;
+  font-size: 16px;
+}
+.menu-item a:hover {
+  text-decoration: none;
+  text-shadow: 2px 2px 5px #313144;
+  opacity: 0.75;
+  transition: 0.5s;
+}
+
 .primary-navigation {
   margin-right: 146px;
 }
@@ -61,16 +76,6 @@ body * {
   display: flex;
   flex-direction: row;
   gap: 45px;
-}
-.primary-navigation .menu-container ul .menu-item > a {
-  text-decoration: none;
-  font-size: 16px;
-}
-.primary-navigation .menu-container ul .menu-item > a:hover {
-  text-decoration: none;
-  text-shadow: 2px 2px 5px #313144;
-  opacity: 0.75;
-  transition: 0.5s;
 }
 
 footer#colophon.site-footer {
@@ -85,18 +90,9 @@ nav.footer-navigation {
 }
 nav.footer-navigation .footer-navigation-wrapper {
   display: flex;
+  justify-content: center;
+  padding: 0;
   gap: 8vw;
-}
-nav.footer-navigation .footer-navigation-wrapper .menu-item > a {
-  font-size: 16px;
-  font-weight: 400;
-  text-decoration: none;
-}
-nav.footer-navigation .footer-navigation-wrapper .menu-item > a:hover {
-  text-decoration: none;
-  text-shadow: 2px 2px 5px #313144;
-  opacity: 0.75;
-  transition: 0.5s;
 }
 
 .wp-block-heading {
@@ -175,17 +171,19 @@ nav.footer-navigation .footer-navigation-wrapper .menu-item > a:hover {
   transition: opacity 1s ease, visibility 1s ease;
   flex-direction: column;
   align-items: center;
-  width: clamp(450px, 38vw, 597px);
-  height: auto;
+  width: clamp(440px, 32vw, 587px);
+  height: 769px;
   overflow: hidden;
   border: 5px solid #000000;
   background-color: #ffffff;
   font-family: "Poppins";
 }
 #contact-modal .modal-header {
-  width: 885.96px;
-  height: auto;
-  margin: 18px 0 36px 0;
+  margin: 18px 0 26px 0;
+}
+#contact-modal .modal-header .logo-contact {
+  width: 885px;
+  height: 106px;
 }
 #contact-modal #wpcf7-f27-o1 {
   width: 100%;
@@ -195,7 +193,6 @@ nav.footer-navigation .footer-navigation-wrapper .menu-item > a:hover {
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  gap: 15px;
   width: 263px;
 }
 #contact-modal #wpcf7-f27-o1 .wpcf7-form label {
@@ -205,16 +202,17 @@ nav.footer-navigation .footer-navigation-wrapper .menu-item > a:hover {
   font-weight: 500;
 }
 #contact-modal #wpcf7-f27-o1 .wpcf7-form input, #contact-modal #wpcf7-f27-o1 .wpcf7-form textarea {
+  padding: 0;
   border: 1px solid #000000;
   border-radius: 10px;
-  width: 100%;
-  height: 40px;
+  width: 261px;
+  height: 38px;
 }
 #contact-modal #wpcf7-f27-o1 .wpcf7-form textarea {
   height: 210px;
 }
 #contact-modal #wpcf7-f27-o1 .wpcf7-form input[type=submit] {
-  width: 263px;
+  width: 262px;
   height: 50px;
   padding: 16px 0;
   background-color: #d8d8d8;

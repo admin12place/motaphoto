@@ -23,18 +23,6 @@ function mota_enqueue_style() { //le css perso
 
 /*************************** */
 
-/*add_action( 'wp_enqueue_scripts', 'mota_enqueue_fonts' );
-
-function mota_enqueue_fonts() {//Les fonts importées depuis Google
-    wp_enqueue_style(
-        'space-mono-poppins-font',
-        'https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap',
-        array(),
-        null);
-};*/
-
-/**************************** */
-
 add_action( 'wp_enqueue_scripts', 'mota_enqueue_scripts_perso' );
 
 function mota_enqueue_scripts_perso() { //le js perso
@@ -44,5 +32,27 @@ function mota_enqueue_scripts_perso() { //le js perso
         array(),
         filemtime(get_stylesheet_directory() . '/js/scripts.js'), true);
 };
+
+/*MENU D'ADMINISTRATION DU THEME N.MOTA*/
+
+function mota_add_admin_pages() {
+add_menu_page(__('Paramètres du thème N.Mota', 'nmota'), __('N.Mota', 
+'nmota'), 'manage_options', 'nmota-settings', 'nmota_theme_settings', 'dashicons-admin-settings', 60);
+}
+
+function nmota_theme_settings() {
+echo '<h1>'.get_admin_page_title().'</h1>';
+}
+
+add_action('admin_menu', 'mota_add_admin_pages', 10);
+
+function mota_register_menus() {
+    register_nav_menus(array(
+        'primary' => 'Menu principal',
+        'footer'  => 'Menu footer'
+    ));
+}
+add_action('after_setup_theme', 'mota_register_menus');
+
 
 
