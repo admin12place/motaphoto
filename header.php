@@ -1,6 +1,6 @@
 <!--mise en place de l'image du header avec SCF-->
 <?php
-	$image_id = (int) SCF::get('bg_header_img', 8);
+	$image_id = (int) SCF::get('bg_header_hero', 85);
 	$image_url = wp_get_attachment_image_url($image_id, 'full');
 ?>
 
@@ -31,9 +31,10 @@
 	<div class="header-image" style="background-image: url('<?php echo esc_url($image_url); ?>');"><!--L'image sur le background-->
 		<h1 class="header-title">PHOTOGRAPHE EVENT</h1>
 	</div>
-
+	<h1>ceci est un titre</h1>
 	<div id="content" class="site-content">
 
 		<div id="primary" class="content-area">
 
 			<main id="main" class="site-main">
+				

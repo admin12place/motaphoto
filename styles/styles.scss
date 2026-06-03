@@ -119,10 +119,6 @@ nav.footer-navigation {//menu secondaire
     }
 }
 
-.wp-block-heading {//suppression du titre de page wp
-    display: none;
-}
-
 //*********************LE HEADER*********************
 
 #page.site {
@@ -265,7 +261,7 @@ nav.footer-navigation {//menu secondaire
 
 //*********************MEDIA QUERIES**********************
 
-@media (max-width: 850px) {
+@media (max-width: 860px) {
     #page.site {
         header {
             .burger {
