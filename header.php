@@ -1,9 +1,5 @@
 
-<!--mise en place de l'image du header avec SCF-->
-<?php
-	$image_id = (int) SCF::get('bg_header_hero', 85);
-	$image_url = wp_get_attachment_image_url($image_id, 'full');
-?>
+
 
 <!doctype html>
 <html <?php language_attributes(); ?>>
@@ -28,10 +24,6 @@
 		
 		<?php get_template_part( 'template-parts/site-nav' ); ?><!--Menu principal-->
 	</header>
-
-	<div class="header-image" style="background-image: url('<?php echo esc_url($image_url); ?>');"><!--L'image sur le background-->
-		<h1 class="header-title">PHOTOGRAPHE EVENT</h1>
-	</div>
 
 	<div id="content" class="site-content">
 
