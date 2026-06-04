@@ -1,7 +1,6 @@
 </main><!-- #main -->
 		</div><!-- #primary -->
 	</div><!-- #content -->
-
 	<footer id="colophon" class="site-footer">
 	
 		<?php if ( has_nav_menu( 'footer' ) ) : ?>

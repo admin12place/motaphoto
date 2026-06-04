@@ -1,4 +1,8 @@
 <?php
+register_nav_menus([
+    'primary' => 'Menu principal',
+    'footer'  => 'Menu footer',
+]);
 
 add_action( 'wp_enqueue_scripts', 'wpm_enqueue_styles' );
 

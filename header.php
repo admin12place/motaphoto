@@ -1,11 +1,12 @@
+
 <!--mise en place de l'image du header avec SCF-->
 <?php
-	$image_id = (int) SCF::get('bg_header_img', 8);
+	$image_id = (int) SCF::get('bg_header_hero', 85);
 	$image_url = wp_get_attachment_image_url($image_id, 'full');
 ?>
 
 <!doctype html>
-<html <?php language_attributes(); ?> <?php twentytwentyone_the_html_classes(); ?>>
+<html <?php language_attributes(); ?>>
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />

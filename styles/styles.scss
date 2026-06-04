@@ -77,20 +77,24 @@
 
 .primary-navigation {//Menu principal
     margin-right: 146px;
-    .menu-container ul{
-        display: flex;
-        flex-direction: row;
-        gap:45px;
-        .menu-item > a {
+    .menu-container {
+        ul {
+            display: flex;
+            flex-direction: row;
+            gap:45px;
+            list-style: none;
+            .menu-item > a {
             text-decoration: none;
+            color: $black-black;
             font-size: 16px;
-            &:hover {
-                text-decoration: none;
-                text-shadow: 2px 2px 5px #313144;
-                opacity: 0.75;
-                transition: 0.5s;
+                &:hover {
+                    text-decoration: none;
+                    text-shadow: 2px 2px 5px #313144;
+                    opacity: 0.75;
+                    transition: 0.5s;
+                }
             }
-        }
+        } 
     } 
 }
 
@@ -105,9 +109,14 @@ nav.footer-navigation {//menu secondaire
     border-top: 1px solid $black-black;
     .footer-navigation-wrapper {
         display: flex;
+        padding-left: 0;
+        align-items: center;
+        justify-content: center;
         gap: 8vw;
+        list-style: none;
         .menu-item > a {
             font-size: 16px;
+            color: $black-black;
             font-weight: 400;
             text-decoration: none;
             &:hover {
@@ -120,9 +129,9 @@ nav.footer-navigation {//menu secondaire
     }
 }
 
-.wp-block-heading {//suppression du titre de page wp
+/*.wp-block-heading {//suppression du titre de page wp
     display: none;
-}
+}*/
 
 //*********************LE HEADER*********************
 
@@ -192,7 +201,7 @@ nav.footer-navigation {//menu secondaire
 #contact-modal {
     display: flex;
     position: fixed;//positionnement
-    top: 55%;
+    top: 52%;
     left: 50%;
     transform: translate(-50%, -50%);
 
@@ -215,6 +224,11 @@ nav.footer-navigation {//menu secondaire
         width: 885.96px;
         height: auto;
         margin: 18px 0 36px 0;
+        .logo-contact {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
     }
     #wpcf7-f27-o1 {
         width: 100%;

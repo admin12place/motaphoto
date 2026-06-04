@@ -61,9 +61,11 @@ body * {
   display: flex;
   flex-direction: row;
   gap: 45px;
+  list-style: none;
 }
 .primary-navigation .menu-container ul .menu-item > a {
   text-decoration: none;
+  color: #000000;
   font-size: 16px;
 }
 .primary-navigation .menu-container ul .menu-item > a:hover {
@@ -85,10 +87,15 @@ nav.footer-navigation {
 }
 nav.footer-navigation .footer-navigation-wrapper {
   display: flex;
+  padding-left: 0;
+  align-items: center;
+  justify-content: center;
   gap: 8vw;
+  list-style: none;
 }
 nav.footer-navigation .footer-navigation-wrapper .menu-item > a {
   font-size: 16px;
+  color: #000000;
   font-weight: 400;
   text-decoration: none;
 }
@@ -99,10 +106,9 @@ nav.footer-navigation .footer-navigation-wrapper .menu-item > a:hover {
   transition: 0.5s;
 }
 
-.wp-block-heading {
-  display: none;
-}
-
+/*.wp-block-heading {//suppression du titre de page wp
+    display: none;
+}*/
 #page.site {
   font-weight: 400;
   font-style: normal;
@@ -167,7 +173,7 @@ nav.footer-navigation .footer-navigation-wrapper .menu-item > a:hover {
 #contact-modal {
   display: flex;
   position: fixed;
-  top: 55%;
+  top: 52%;
   left: 50%;
   transform: translate(-50%, -50%);
   opacity: 1;
@@ -186,6 +192,12 @@ nav.footer-navigation .footer-navigation-wrapper .menu-item > a:hover {
   width: 885.96px;
   height: auto;
   margin: 18px 0 36px 0;
+}
+#contact-modal .modal-header .logo-contact {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 #contact-modal #wpcf7-f27-o1 {
   width: 100%;
