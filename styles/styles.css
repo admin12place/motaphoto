@@ -242,6 +242,58 @@ nav.footer-navigation .footer-navigation-wrapper .menu-item > a:hover {
   transition: opacity 1s ease, visibility 1s ease;
 }
 
+/********************LA PAGE SINGLE***********************/
+#main-single {
+  height: 84vh;
+  padding: 0 146px;
+  border: 1px solid black;
+}
+#main-single .post-photo-single {
+  display: flex;
+  gap: 21px;
+  margin: 0;
+  height: 85%;
+}
+#main-single .post-photo-single .desc-photo-single {
+  display: flex;
+  flex-direction: column;
+  margin-top: auto;
+  width: 50%;
+  background-color: #ffd6d6;
+  border-bottom: 2px solid #000000;
+}
+#main-single .post-photo-single .desc-photo-single h2 {
+  margin: 0 0 20px 0;
+  font-size: 66px;
+  line-height: 66px;
+  font-weight: 400;
+  font-style: italic;
+}
+#main-single .post-photo-single .desc-photo-single .desc-item-photo {
+  display: block;
+  margin: 0 0 20px 0;
+  font-size: 14px;
+  line-height: 100%;
+  letter-spacing: 10%;
+}
+#main-single .post-photo-single .img-photo-single {
+  width: 50%;
+  height: 100%;
+  background-color: #e5e5e5;
+}
+#main-single .post-photo-single .img-photo-single img {
+  width: 100%;
+  height: auto;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+#main-single .link-slider-single {
+  min-height: 15%;
+  background-color: #fe5858;
+  border-bottom: 2px solid #000000;
+}
+
+/*********************MEDIA QUERIES***********************/
 @media (max-width: 850px) {
   #page.site header .burger {
     display: flex;
