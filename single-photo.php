@@ -22,24 +22,51 @@
 
 <!--STRUCTURE HTML DE LA PAGE SINGLE-->
 <article id="main-single">
+
     <div class="post-photo-single">
-        <div class="desc-photo-single <?php echo $class_format; ?>">
-            <h2><?php echo $photo_title; ?></h2>
-            <span class="desc-item-photo"><?php echo $photo_reference; ?></span>
-            <span class="desc-item-photo"><?php echo $photo_categorie; ?></span>
-            <span class="desc-item-photo"><?php echo $photo_format; ?></span>
-            <span class="desc-item-photo"><?php echo $photo_type; ?></span>
-            <span class="desc-item-photo"><?php echo $photo_year; ?></span>
+
+        <div class="left-contain">
+
+            <div class="desc-photo-single <?php echo $class_format; ?>">
+                <h2><?php echo $photo_title; ?></h2>
+                <span class="desc-item-photo"><?php echo $photo_reference; ?></span>
+                <span class="desc-item-photo"><?php echo $photo_categorie; ?></span>
+                <span class="desc-item-photo"><?php echo $photo_format; ?></span>
+                <span class="desc-item-photo"><?php echo $photo_type; ?></span>
+                <span class="desc-item-photo"><?php echo $photo_year; ?></span>
+            </div>
+
         </div>
+
         <div class="img-photo-single">
-        <img class="" src="<?php echo esc_url($photo_file_url);?>"/>
+            <img class="main-image" src="<?php echo esc_url($photo_file_url);?>"/>
         </div>
 
     </div>
+
     <div class="link-slider-single">
+
+        <div class="left-block-slider">
+            <h3 class="single-text">Cette photo vous intéresse ?</h3>
+            <button class="single-button">
+                Contact
+                <input type="hidden" value="<?php echo $photo_reference; ?>"></input>
+            </button>
+        </div>
+
+        <div class="right-block-slider">
+            <img class="slider-image" src="<?php echo esc_url($photo_file_url);?>"/>
+
+            <div class="slider-arrows">
+                <img class="arrow-left" src="<?= get_stylesheet_directory_uri() ?>/assets/icons/arrow67.svg"/>
+                <img class="arrow-right" src="<?= get_stylesheet_directory_uri() ?>/assets/icons/arrow67.svg"/>
+            </div>
+
+        </div>
         
     </div>
     <div class="like-photo-single">
+
     </div>
 
 </article>
