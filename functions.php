@@ -13,7 +13,7 @@ function wpm_enqueue_styles() {//Ref au theme parent
 	);
 }
 
-/*************************** */
+/***************************/
 
 add_action('wp_enqueue_scripts', 'mota_enqueue_style');
 
@@ -25,19 +25,7 @@ function mota_enqueue_style() { //le css perso
         filemtime(get_stylesheet_directory() . '/styles/styles.css'));
 };
 
-/*************************** */
-
-/*add_action( 'wp_enqueue_scripts', 'mota_enqueue_fonts' );
-
-function mota_enqueue_fonts() {//Les fonts importées depuis Google
-    wp_enqueue_style(
-        'space-mono-poppins-font',
-        'https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap',
-        array(),
-        null);
-};*/
-
-/**************************** */
+/*****************************/
 
 add_action( 'wp_enqueue_scripts', 'mota_enqueue_scripts_perso' );
 
@@ -47,6 +35,80 @@ function mota_enqueue_scripts_perso() { //le js perso
         get_stylesheet_directory_uri() . '/js/scripts.js',
         array(),
         filemtime(get_stylesheet_directory() . '/js/scripts.js'), true);
-};
 
+    wp_localize_script(
+        'scripts',
+        'ajax_object',
+        array(
+            'ajax_url' => admin_url('admin-ajax.php')
+        )
+    );
+}
 
+/*****************************/
+
+add_action('wp_enqueue_scripts', 'theme_enqueue_scripts');
+
+function theme_enqueue_scripts() {
+    wp_enqueue_script('jquery');
+}
+
+/*****************************/
+
+add_action('wp_ajax_load_related_photos', 'load_related_photos');
+add_action('wp_ajax_nopriv_load_related_photos', 'load_related_photos');
+
+function load_related_photos() {
+
+    $photo_id = intval($_POST['photo_id']);
+    $categories = array_map('intval', explode(',', $_POST['categories']));
+    $args = array(
+        'post_type'      => 'photo',
+        'posts_per_page' => 2,
+        'orderby'        => 'rand',
+        'post__not_in'   => array($photo_id),
+        'tax_query'      => array(
+            array(
+                'taxonomy' => 'categorie',
+                'field'    => 'term_id',
+                'terms'    => $categories,
+            ),
+        ),
+    );
+
+    $query = new WP_Query($args);
+
+    ob_start();
+
+    if ($query->have_posts()) :
+
+        while ($query->have_posts()) :
+            $query->the_post();
+
+            $photo_file_id = SCF::get('photo_file');
+            $image = wp_get_attachment_url($photo_file_id);
+            ?>
+
+            <article class="related-photo">
+                <a href="<?php the_permalink(); ?>">
+                    <img
+                        src="<?php echo esc_url($image); ?>"
+                        alt="<?php the_title_attribute(); ?>"
+                    >
+                </a>
+            </article>
+
+            <?php
+
+        endwhile;
+
+    endif;
+
+    wp_reset_postdata();
+
+    echo ob_get_clean();
+
+    wp_die();
+}
+
+/*******************************/
