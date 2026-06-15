@@ -2,22 +2,47 @@
 
     get_header();
 
+    //Récupèration des slugs de toutes les photos dans un tableau
+    $photos = get_posts([
+    'post_type'      => 'photo',
+    'posts_per_page' => -1,
+    'post_status'    => 'publish',
+    'meta_key'       => 'photo_year',
+    'orderby'        => 'meta_value_num',
+    'order'          => 'DESC'
+    ]);
+
+    $slugs = [];
+
+    foreach ($photos as $photo) {
+        $slugs[] = $photo->post_name;
+        $photoUrls[] = get_permalink($photo->ID);
+    }
+?>
+
+<script>
+    const photoSlugs = <?php echo json_encode($slugs); ?>;//Tableau des slug de outes les photos
+    const thisPhotoSlug = "<?= get_post_field('post_name', get_the_ID()); ?>";//Slug de l'image actuelle
+    const photoUrls = <?php echo json_encode($photoUrls); ?>;//Tableau des url de toutes les photos
+</script>
+
+<?php
+
     while ( have_posts() ) : the_post() ;
 
     $photo_file = mb_strtoupper ('Fichier : ' . esc_html(SCF::get('photo_file')), 'UTF-8');
     $photo_file_url = wp_get_attachment_url(SCF::get('photo_file'));
     $photo_title = mb_strtoupper (esc_html(SCF::get('photo_title')), 'UTF-8');
     $photo_reference =  mb_strtoupper (esc_html(SCF::get('photo_reference')), 'UTF-8');
-    $photo_year =   mb_strtoupper ('année : ' . esc_html(SCF::get('photo_year')), 'UTF-8');
-    $photo_type =  mb_strtoupper ('type : ' . esc_html(SCF::get('photo_type')), 'UTF-8');
-    $class_format = strtolower (esc_html(SCF::get('photo_format')));
-    $photo_format =  mb_strtoupper ('format : ' . esc_html(SCF::get('photo_format')), 'UTF-8');
+    $photo_year =   mb_strtoupper (esc_html(SCF::get('photo_year')), 'UTF-8');
+    $photo_type =  mb_strtoupper (esc_html(SCF::get('photo_type')), 'UTF-8');
+    $photo_format =  mb_strtoupper (esc_html(SCF::get('photo_format')), 'UTF-8');
 
     $photo_categorie = [];
         $cats = get_the_terms(get_the_ID(), 'categorie');
         if ($cats && !is_wp_error($cats)) {
             foreach ($cats as $cat) { $photo_categorie[] = $cat->name; } }
-    $photo_categorie =  mb_strtoupper ('catégorie : ' . implode (', ', $photo_categorie), 'UTF-8');
+    $photo_categorie =  mb_strtoupper (implode (', ', $photo_categorie), 'UTF-8');
 ?>
 
 <!--STRUCTURE HTML DE LA PAGE SINGLE-->
@@ -30,10 +55,10 @@
             <div class="desc-photo-single <?php echo $class_format; ?>">
                 <h2><?php echo $photo_title; ?></h2>
                 <span class="desc-item-photo"><?php echo "RÉFÉRENCE : " . $photo_reference; ?></span>
-                <span class="desc-item-photo"><?php echo $photo_categorie; ?></span>
-                <span class="desc-item-photo"><?php echo $photo_format; ?></span>
-                <span class="desc-item-photo"><?php echo $photo_type; ?></span>
-                <span class="desc-item-photo"><?php echo $photo_year; ?></span>
+                <span class="desc-item-photo"><?php echo "CATÉGORIES : " . $photo_categorie; ?></span>
+                <span class="desc-item-photo"><?php echo "FORMAT : " . $photo_format; ?></span>
+                <span class="desc-item-photo"><?php echo "TYPE : " . $photo_type; ?></span>
+                <span class="desc-item-photo"><?php echo "ANNÉE : " . $photo_year; ?></span>
             </div>
 
         </div>
@@ -57,8 +82,8 @@
             <img class="slider-image" src="<?php echo esc_url($photo_file_url);?>"/>
 
             <div class="slider-arrows">
-                <img class="arrow-left" src="<?= get_stylesheet_directory_uri() ?>/assets/icons/arrow67.svg"/>
-                <img class="arrow-right" src="<?= get_stylesheet_directory_uri() ?>/assets/icons/arrow67.svg"/>
+                <img class="arrow-left" title="Photo précédente" src="<?= get_stylesheet_directory_uri() ?>/assets/icons/arrow67.svg"/>
+                <img class="arrow-right" title="Photo suivante" src="<?= get_stylesheet_directory_uri() ?>/assets/icons/arrow67.svg"/>
             </div>
 
         </div>

@@ -52,3 +52,33 @@ jQuery(document).ready(function ($) {
     });
 
 });
+
+/*Changement d'image au click sur les flèches*/
+
+const arrowPrec = document.querySelector('.arrow-left');
+const arrowSuiv = document.querySelector('.arrow-right');
+const photoLength = photoSlugs.length;
+
+let thisIndex = photoSlugs.indexOf(thisPhotoSlug);
+
+arrowPrec.addEventListener('click', ( )=> {
+    if (thisIndex > 0) {
+        thisIndex--;
+    } else {
+        thisIndex = photoLength - 1;
+    }
+
+    let newSlug = photoSlugs[thisIndex];
+    window.location.href = photoUrls[thisIndex];
+})
+
+arrowSuiv.addEventListener('click', ( )=> {
+    if (thisIndex < photoLength - 1) {
+        thisIndex++;
+    } else {
+        thisIndex = 0;
+    }
+
+    let newSlug = photoSlugs[thisIndex];
+    window.location.href = photoUrls[thisIndex];
+})
