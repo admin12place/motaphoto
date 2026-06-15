@@ -73,10 +73,13 @@
     font-family: "SpaceMono", sans-serif!important;
 }
 
+.undisplayed {
+    display: none!important;
+}
+
 //*****************LES MENUS*************************
 
 .primary-navigation {//Menu principal
-    //margin-right: 146px;
     .menu-container {
         ul {
             display: flex;
@@ -99,6 +102,8 @@
 }
 
 footer#colophon.site-footer {
+    position: relative;
+    bottom: 0;
     margin: 0;
     max-width: 1440px;
     padding: 0;
@@ -441,7 +446,7 @@ nav.footer-navigation {//menu secondaire
 /*********************MEDIA QUERIES***********************/
 
 @media (max-width: 780px) {
-    #page.site {
+    #page.site,  #main-single {
         header {
             .burger {
                 display: flex;
@@ -449,19 +454,28 @@ nav.footer-navigation {//menu secondaire
             }
             .primary-navigation {
                 position: absolute;
-                top:80px;
-                left: 0;
-                width: 100%;
-                background: $grey-cold-medium;
+                top:60px;
+                right: 25px;
+                width: auto;
+                background: $white-white;
+                opacity: 0.8;
+                border-radius: 25px;
+                z-index: 999;
                 display: none;
-            }
-            .primary-navigation.active {
-                display: block;
-                ul {
-                    flex-direction: column;
-                    padding: 20px;
+                &.active {
+                     display: block;
+                     ul {
+                        flex-direction: column;
+                        margin: 0;
+                        gap: 15px;
+                        padding: 20px;
+                        a {
+                            font-size: clamp(12px, 2vw, 16px);
+                        }
+                    }
                 }
             }
+           
             .header-logo {
                 margin: 31px 6vw 35px;
             }

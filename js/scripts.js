@@ -20,6 +20,23 @@ document.addEventListener('click', (e) => {
         }
     });
 
+/*Gestion du menu burger*/
+
+const menuBurger = document.querySelector('.burger');
+const menuContainer = document.querySelector('.primary-navigation');
+
+menuBurger.addEventListener('click', () => {
+    menuBurger.classList.add('undisplayed');
+    menuContainer.classList.add('active');
+})
+
+document.addEventListener('click', (e) => {
+    if (!menuContainer.contains(e.target)  && !menuBurger.contains(e.target)){
+        menuContainer.classList.remove('active');
+        menuBurger.classList.remove('undisplayed');
+    }
+})
+
 /*Pré-remplissage de la référence de la photo en cours*/
 
 jQuery(function($) {
@@ -61,6 +78,7 @@ jQuery(document).ready(function ($) {
 const arrowPrec = document.querySelector('.arrow-left');
 const arrowSuiv = document.querySelector('.arrow-right');
 const photoLength = photoSlugs.length;
+
 
 let thisIndex = photoSlugs.indexOf(thisPhotoSlug);
 

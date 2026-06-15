@@ -54,6 +54,10 @@ body * {
   font-family: "SpaceMono", sans-serif !important;
 }
 
+.undisplayed {
+  display: none !important;
+}
+
 .primary-navigation .menu-container ul {
   display: flex;
   flex-direction: row;
@@ -73,6 +77,8 @@ body * {
 }
 
 footer#colophon.site-footer {
+  position: relative;
+  bottom: 0;
   margin: 0;
   max-width: 1440px;
   padding: 0;
@@ -399,29 +405,37 @@ nav.footer-navigation .footer-navigation-wrapper .menu-item > a:hover {
 
 /*********************MEDIA QUERIES***********************/
 @media (max-width: 780px) {
-  #page.site header .burger {
+  #page.site header .burger, #main-single header .burger {
     display: flex;
     margin-right: 6vw;
   }
-  #page.site header .primary-navigation {
+  #page.site header .primary-navigation, #main-single header .primary-navigation {
     position: absolute;
-    top: 80px;
-    left: 0;
-    width: 100%;
-    background: #d8d8d8;
+    top: 60px;
+    right: 25px;
+    width: auto;
+    background: #ffffff;
+    opacity: 0.8;
+    border-radius: 25px;
+    z-index: 999;
     display: none;
   }
-  #page.site header .primary-navigation.active {
+  #page.site header .primary-navigation.active, #main-single header .primary-navigation.active {
     display: block;
   }
-  #page.site header .primary-navigation.active ul {
+  #page.site header .primary-navigation.active ul, #main-single header .primary-navigation.active ul {
     flex-direction: column;
+    margin: 0;
+    gap: 15px;
     padding: 20px;
   }
-  #page.site header .header-logo {
+  #page.site header .primary-navigation.active ul a, #main-single header .primary-navigation.active ul a {
+    font-size: clamp(12px, 2vw, 16px);
+  }
+  #page.site header .header-logo, #main-single header .header-logo {
     margin: 31px 6vw 35px;
   }
-  #page.site .header-image .header-title {
+  #page.site .header-image .header-title, #main-single .header-image .header-title {
     -webkit-text-stroke: 0.25vw rgb(255, 255, 255);
   }
   #main-single .post-photo-single {
