@@ -109,13 +109,12 @@ nav.footer-navigation {//menu secondaire
     border-top: 1px solid $black-black;
     .footer-navigation-wrapper {
         display: flex;
-        padding-left: 0;
         align-items: center;
         justify-content: center;
         gap: 8vw;
         list-style: none;
         .menu-item > a {
-            font-size: 16px;
+            font-size: clamp(12px, 2vw, 16px);
             color: $black-black;
             font-weight: 400;
             text-decoration: none;
@@ -283,7 +282,7 @@ nav.footer-navigation {//menu secondaire
 
 /********************LA PAGE SINGLE***********************/
 #main-single {
-    min-height: 89vh;
+    min-height: auto;
     padding: 0 clamp(10px, 9.2vw, 146px);
     .post-photo-single {
         display: flex;
@@ -441,7 +440,7 @@ nav.footer-navigation {//menu secondaire
 
 /*********************MEDIA QUERIES***********************/
 
-@media (max-width: 855px) {
+@media (max-width: 780px) {
     #page.site {
         header {
             .burger {
@@ -470,6 +469,21 @@ nav.footer-navigation {//menu secondaire
         .header-image {
             .header-title {
                 -webkit-text-stroke: 0.25vw rgba(255,255,255,1);
+            }
+        }
+    }
+    #main-single {
+        .post-photo-single {
+            height: auto;
+        }
+        .link-slider-single {
+            .left-block-slider {
+                flex-direction: column;
+                justify-content: space-around;
+                .single-button {
+                    width: 80%;
+                    height: 40%;
+                }
             }
         }
     }

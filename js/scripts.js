@@ -23,12 +23,15 @@ document.addEventListener('click', (e) => {
 /*Pré-remplissage de la référence de la photo en cours*/
 
 jQuery(function($) {
+    if (typeof thisPhotoRef !== 'undefined') {
+        $('#photo-ref').val(thisPhotoRef);
+    }
     $('.single-button').on('click', function() {
         $('#photo-ref').val($(this).data('photo-ref'));
     });
 });
 
-/**/
+/*Envoi de la requete ajax au serveur, reponse et modif du html*/
 
 jQuery(document).ready(function ($) {
 

@@ -20,12 +20,6 @@
     }
 ?>
 
-<script>
-    const photoSlugs = <?php echo json_encode($slugs); ?>;//Tableau des slug de outes les photos
-    const thisPhotoSlug = "<?= get_post_field('post_name', get_the_ID()); ?>";//Slug de l'image actuelle
-    const photoUrls = <?php echo json_encode($photoUrls); ?>;//Tableau des url de toutes les photos
-</script>
-
 <?php
 
     while ( have_posts() ) : the_post() ;
@@ -44,6 +38,13 @@
             foreach ($cats as $cat) { $photo_categorie[] = $cat->name; } }
     $photo_categorie =  mb_strtoupper (implode (', ', $photo_categorie), 'UTF-8');
 ?>
+
+<script>
+    const photoSlugs = <?php echo json_encode($slugs); ?>;//Tableau des slug de toutes les photos
+    const thisPhotoSlug = "<?= get_post_field('post_name', get_the_ID()); ?>";//Slug de l'image actuelle
+    const photoUrls = <?php echo json_encode($photoUrls); ?>;//Tableau des url de toutes les photos
+    const thisPhotoRef = "<?= esc_js($photo_reference); ?>";//reference de la photo actuelle pour jQuery et la modale
+</script>
 
 <!--STRUCTURE HTML DE LA PAGE SINGLE-->
 <article id="main-single">
