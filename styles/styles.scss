@@ -440,8 +440,25 @@ nav.footer-navigation {//menu secondaire
         }
     }
 }
-   
-    
+
+/**********************LA PAGE 404***********************/
+#page404error {
+    min-height: 75vh;
+
+    h1.page404title {
+        font-size: clamp(24px, 6vw, 96px);
+        font-weight: 700;
+        font-style: italic;
+        -webkit-text-stroke: 0.17vw rgba(0, 0, 0,1);
+        color: transparent;
+        white-space: nowrap;
+        text-align: center;
+    }
+    .page404text {
+        font-size: clamp(12px, 1.2vw, 36px);
+        text-align: center;
+    }
+}  
 
 /*********************MEDIA QUERIES***********************/
 

@@ -37,7 +37,7 @@ document.addEventListener('click', (e) => {
     }
 })
 
-/*Pré-remplissage de la référence de la photo en cours*/
+/*Pré-remplissage de la référence de la photo en cours sur la modale contact*/
 
 jQuery(function($) {
     if (typeof thisPhotoRef !== 'undefined') {

@@ -403,6 +403,24 @@ nav.footer-navigation .footer-navigation-wrapper .menu-item > a:hover {
      object-fit: cover;
 }
 
+/**********************LA PAGE 404***********************/
+#page404error {
+  min-height: 75vh;
+}
+#page404error h1.page404title {
+  font-size: clamp(24px, 6vw, 96px);
+  font-weight: 700;
+  font-style: italic;
+  -webkit-text-stroke: 0.17vw rgb(0, 0, 0);
+  color: transparent;
+  white-space: nowrap;
+  text-align: center;
+}
+#page404error .page404text {
+  font-size: clamp(12px, 1.2vw, 36px);
+  text-align: center;
+}
+
 /*********************MEDIA QUERIES***********************/
 @media (max-width: 780px) {
   #page.site header .burger, #main-single header .burger {

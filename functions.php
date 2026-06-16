@@ -112,3 +112,42 @@ function load_related_photos() {
 }
 
 /*******************************/
+
+function load_contain($post_type, $post_categorie, $post_number) {
+    $args = array(
+        'post_type' => $post_type,
+        'posts_per_page' => $post_number
+    );
+    if (!empty($post_categorie)) {
+            $args['category_name'] = $post_categorie;
+        }
+
+    $query_load_contain = new WP_Query($args);
+
+    $photos = array();
+
+    $cats = get_the_terms(get_the_ID(), 'categorie');
+        if ($cats && !is_wp_error($cats)) {
+            foreach ($cats as $cat) { $photo_categorie[] = $cat->name; } }
+            $photo_categorie =  implode (', ', $photo_categorie);
+
+    if ($query_load_contain->have_posts()) :
+        while ($query_load_contain->have_posts()) : $query_load_contain->the_post();
+
+            $photos[] = array(
+                'id'            => get_the_ID(),
+                'permalink'     => get_permalink(),
+                'url'           => wp_get_attachment_url(SCF::get('photo_file')),
+                'title'         => SCF::get('photo_title'),
+                'reference'     => SCF::get('photo_reference'),
+                'year'          => SCF::get('photo_year'),
+                'type'          => SCF::get('photo_type'),
+                'format'        => SCF::get('photo_format'),
+                'categories'    => $photo_categorie
+                );
+        endwhile;
+    endif;
+
+    wp_reset_postdata();
+    return $photos;
+}

@@ -19,9 +19,36 @@
 				endif;
 			?>
 
-			<?php
-
-		the_content();
+<?php
 	endwhile;
+?>
 
-get_footer();
+<!--Le html du catalogue de photos-->
+<section id="photos-catalogue">
+	<div class="search-sort">
+		<div class="search">
+			<label for="categories-search">CATÉGORIES</label>
+			<select id="categories-search" name="categories-search">
+
+			</select>
+
+			<label for="formats-search">FORMATS</label>
+			<select id="formats-search" name="formats-search">
+
+			</select>
+		</div>
+
+		<div class="sort">
+			<label for="sort-photos">TRIER PAR</label>
+			<select id="sort-photos" name="sort-photos">
+		</div>
+	</div>
+
+	<div class="photos-thumbnail">
+
+	</div>
+</section>
+
+<?php
+	get_footer();
+?>

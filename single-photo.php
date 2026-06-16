@@ -41,8 +41,8 @@
 
 <script>
     const photoSlugs = <?php echo json_encode($slugs); ?>;//Tableau des slug de toutes les photos
-    const thisPhotoSlug = "<?= get_post_field('post_name', get_the_ID()); ?>";//Slug de l'image actuelle
     const photoUrls = <?php echo json_encode($photoUrls); ?>;//Tableau des url de toutes les photos
+    const thisPhotoSlug = "<?= get_post_field('post_name', get_the_ID()); ?>";//Slug de l'image actuelle
     const thisPhotoRef = "<?= esc_js($photo_reference); ?>";//reference de la photo actuelle pour jQuery et la modale
 </script>
 
