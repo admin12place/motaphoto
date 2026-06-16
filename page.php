@@ -15,32 +15,29 @@
 			<div class="header-image" style="background-image: url('<?php echo esc_url($image_url); ?>');"><!--L'image sur le background-->
 				<h1 class="header-title">PHOTOGRAPHE EVENT</h1>
 			</div>
-			<?php
-				endif;
-			?>
-
-<?php
-	endwhile;
-?>
-
+	<?php
+		endif;
+	?>
 <!--Le html du catalogue de photos-->
 <section id="photos-catalogue">
 	<div class="search-sort">
 		<div class="search">
-			<label for="categories-search">CATÉGORIES</label>
-			<select id="categories-search" name="categories-search">
+			<div class="select-form">
+				<label for="categories-search">CATÉGORIES</label>
+				<select id="categories-search" name="categories-search"></select>
+			</div>
 
-			</select>
-
-			<label for="formats-search">FORMATS</label>
-			<select id="formats-search" name="formats-search">
-
-			</select>
+			<div class="select-form">
+				<label for="formats-search">FORMATS</label>
+				<select id="formats-search" name="formats-search"></select>
+			</div>
 		</div>
 
 		<div class="sort">
-			<label for="sort-photos">TRIER PAR</label>
-			<select id="sort-photos" name="sort-photos">
+			<div class="select-form">
+				<label for="sort-photos">TRIER PAR</label>
+				<select id="sort-photos" name="sort-photos"></select>
+			</div>
 		</div>
 	</div>
 
@@ -50,5 +47,6 @@
 </section>
 
 <?php
+	endwhile;
+
 	get_footer();
-?>

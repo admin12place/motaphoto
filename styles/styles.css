@@ -248,6 +248,43 @@ nav.footer-navigation .footer-navigation-wrapper .menu-item > a:hover {
   transition: opacity 1s ease, visibility 1s ease;
 }
 
+/*******************LA PAGE ACCUEIL***********************/
+#photos-catalogue {
+  display: flex;
+  flex-direction: column;
+  width: 76vw;
+  margin: 80px auto 40px;
+}
+#photos-catalogue .search-sort {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+#photos-catalogue .search-sort .search {
+  display: flex;
+  flex-direction: row;
+  width: 50%;
+  justify-content: space-between;
+}
+#photos-catalogue .search-sort .sort {
+  display: flex;
+  flex-direction: row;
+  width: 50%;
+  justify-content: flex-end;
+}
+#photos-catalogue .photos-thumbnail {
+  display: flex;
+}
+#photos-catalogue .select-form {
+  display: flex;
+  flex-direction: column;
+}
+#photos-catalogue .select-form select {
+  background-color: #ffffff;
+  width: 17.25vw;
+  height: 4.45vh;
+}
+
 /********************LA PAGE SINGLE***********************/
 #main-single {
   min-height: auto;

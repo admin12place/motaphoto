@@ -285,6 +285,47 @@ nav.footer-navigation {//menu secondaire
     
 }
 
+/*******************LA PAGE ACCUEIL***********************/
+
+#photos-catalogue {
+    display: flex;
+    flex-direction: column;
+    width: 76vw;
+    margin: 80px auto 40px;
+    .search-sort {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        .search {
+            display: flex;
+            flex-direction: row;
+            width: 50%;
+            justify-content: space-between;
+        }
+        .sort {
+            display: flex;
+            flex-direction: row;
+            width: 50%;
+            justify-content: flex-end;
+        }
+    }
+    .photos-thumbnail {
+        display: flex;
+    }
+    .select-form {
+        display: flex;
+        flex-direction: column;
+        label {
+
+        }
+        select {
+            background-color: $white-white;
+            width: 17.25vw;
+            height: 4.45vh;
+        }
+    }
+}
+
 /********************LA PAGE SINGLE***********************/
 #main-single {
     min-height: auto;
