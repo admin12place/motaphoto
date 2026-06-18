@@ -291,6 +291,7 @@ nav.footer-navigation {//menu secondaire
     display: flex;
     flex-direction: column;
     width: 76vw;
+    max-width: 1148px;
     margin: 80px auto 40px;
     .search-sort {
         display: flex;
@@ -312,6 +313,23 @@ nav.footer-navigation {//menu secondaire
     }
     .photos-thumbnail {
         display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        margin-top: 4vh;
+        justify-content: space-between;
+        column-gap: 1vw;
+        row-gap: 1vw;
+        .single-link {
+            width: 49%;
+            .gallery {
+                width: 100%;
+                aspect-ratio: 1 / 1;
+                object-fit: cover;
+                &:hover {
+                    //le petit oeil
+                }
+            }
+        } 
     }
     .select-form {
         display: flex;

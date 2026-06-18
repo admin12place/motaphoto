@@ -12,7 +12,6 @@
 		'post_type'      => 'photo',
 		'posts_per_page' => -1,
 		'fields'         => 'ids']);
-
 	foreach ($photos as $photo_id) {
     $format = SCF::get('photo_format', $photo_id);
 		if (!empty($format)) {
@@ -25,7 +24,11 @@
     	'taxonomy'   => 'categorie',
     	'hide_empty' => true,
 	]);
-	
+
+	$photos_gallery = load_contain('photo', '', '','DESC', 8);
+	/*echo '<pre>';
+		var_dump($photos_gallery);
+	echo '</pre>';*/
 ?>
 <?php
 	while ( have_posts() ) :
@@ -36,7 +39,7 @@
 				<h1 class="header-title">PHOTOGRAPHE EVENT</h1>
 			</div>
 	
-<!--Le html du catalogue de photos-->
+<!--Le html des champs de filtres et du tri-->
 <section id="photos-catalogue">
 	<div class="search-sort">
 		<div class="search">
@@ -80,7 +83,20 @@
 		</div>
 	</div>
 
+	<!--Le html du catalogue de photos-->
+
 	<div class="photos-thumbnail">
+		<?php
+			foreach ($photos_gallery as $photo_gallery) :
+		?>
+		<a class="single-link" href="<?php echo esc_url($photo_gallery['permalink']);?>">
+			<img class="gallery" src="<?php echo esc_url($photo_gallery['url']);?>" alt="<?php echo $photo_gallery['title'];?>"/>
+			</a>
+		<?php
+			endforeach;
+		?>
+
+
 
 	</div>
 </section>

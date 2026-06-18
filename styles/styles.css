@@ -253,6 +253,7 @@ nav.footer-navigation .footer-navigation-wrapper .menu-item > a:hover {
   display: flex;
   flex-direction: column;
   width: 76vw;
+  max-width: 1148px;
   margin: 80px auto 40px;
 }
 #photos-catalogue .search-sort {
@@ -275,6 +276,22 @@ nav.footer-navigation .footer-navigation-wrapper .menu-item > a:hover {
 }
 #photos-catalogue .photos-thumbnail {
   display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-top: 4vh;
+  justify-content: space-between;
+  -moz-column-gap: 1vw;
+       column-gap: 1vw;
+  row-gap: 1vw;
+}
+#photos-catalogue .photos-thumbnail .single-link {
+  width: 49%;
+}
+#photos-catalogue .photos-thumbnail .single-link .gallery {
+  width: 100%;
+  aspect-ratio: 1/1;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 #photos-catalogue .select-form {
   display: flex;
