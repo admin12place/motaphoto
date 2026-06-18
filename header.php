@@ -6,6 +6,7 @@
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta title="site photographe Nathalie Mota" />
 	<?php wp_head(); ?>
 </head>
 

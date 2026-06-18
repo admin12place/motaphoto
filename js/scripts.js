@@ -58,11 +58,11 @@ jQuery(document).ready(function ($) {
         return;
     }
 
-    $.ajax({
-        url: ajax_object.ajax_url,
+    $.ajax({//Lance la requete ajax
+        url: ajax_object.ajax_url,//adresse vers admin-ajax.php definie dans functions.php
         type: 'POST',
         data: {
-            action: 'load_related_photos',
+            action: 'load_related_photos',//appel à la fonction citée
             photo_id: container.data('photo-id'),
             categories: container.data('categories')
         },
@@ -73,16 +73,24 @@ jQuery(document).ready(function ($) {
 
 });
 
-/*Changement d'image au click sur les flèches*/
+/*Changement d'image au click sur les flèches et apparition des thumbnails*/
 
 const arrowPrec = document.querySelector('.arrow-left');
 const arrowSuiv = document.querySelector('.arrow-right');
 const photoLength = photoSlugs.length;
-
+const precSuivThumb = document.querySelector('.prec-suiv-thumbnail');
 
 let thisIndex = photoSlugs.indexOf(thisPhotoSlug);
 
-arrowPrec.addEventListener('click', ( )=> {
+function showPreview(index) {
+    precSuivThumb.style.backgroundImage =
+        `url(${photoFiles[index]})`;
+
+    precSuivThumb.classList.add('displayed');
+}
+
+//gestion de la fleche image précédente
+arrowPrec.addEventListener('click', ()=> {
     if (thisIndex > 0) {
         thisIndex--;
     } else {
@@ -93,6 +101,15 @@ arrowPrec.addEventListener('click', ( )=> {
     window.location.href = photoUrls[thisIndex];
 })
 
+arrowPrec.addEventListener('mouseenter', () => {
+    showPreview((thisIndex - 1 + photoLength) % photoLength);
+});
+
+arrowPrec.addEventListener('mouseleave', () => {
+    precSuivThumb.classList.remove('displayed');
+})
+
+//Gestion de la fleche image suivante
 arrowSuiv.addEventListener('click', ( )=> {
     if (thisIndex < photoLength - 1) {
         thisIndex++;
@@ -103,3 +120,15 @@ arrowSuiv.addEventListener('click', ( )=> {
     let newSlug = photoSlugs[thisIndex];
     window.location.href = photoUrls[thisIndex];
 })
+
+arrowSuiv.addEventListener('mouseenter', () => {
+    showPreview((thisIndex + 1) % photoLength);
+});
+
+arrowSuiv.addEventListener('mouseleave', () => {
+    precSuivThumb.classList.remove('displayed');
+})
+
+
+
+

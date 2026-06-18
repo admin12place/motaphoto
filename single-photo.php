@@ -12,11 +12,14 @@
     'order'          => 'DESC'
     ]);
 
-    $slugs = [];
+    $slugs = [];//tableau des slugs
+    $photoFiles = [];//tableau des fichiers images
 
     foreach ($photos as $photo) {
         $slugs[] = $photo->post_name;
         $photoUrls[] = get_permalink($photo->ID);
+        $photoImage = (int) SCF::get('photo_file', $photo->ID);
+        $photoFiles[] = wp_get_attachment_image_url($photoImage, 'medium');
     }
 ?>
 
@@ -42,6 +45,7 @@
 <script>
     const photoSlugs = <?php echo json_encode($slugs); ?>;//Tableau des slug de toutes les photos
     const photoUrls = <?php echo json_encode($photoUrls); ?>;//Tableau des url de toutes les photos
+    const photoFiles = <?php echo json_encode($photoFiles); ?>;//Tableau des chemins vers les fichiers
     const thisPhotoSlug = "<?= get_post_field('post_name', get_the_ID()); ?>";//Slug de l'image actuelle
     const thisPhotoRef = "<?= esc_js($photo_reference); ?>";//reference de la photo actuelle pour jQuery et la modale
 </script>
@@ -85,6 +89,8 @@
             <div class="slider-arrows">
                 <img class="arrow-left" title="Photo précédente" src="<?= get_stylesheet_directory_uri() ?>/assets/icons/arrow67.svg"/>
                 <img class="arrow-right" title="Photo suivante" src="<?= get_stylesheet_directory_uri() ?>/assets/icons/arrow67.svg"/>
+            
+                <div class="prec-suiv-thumbnail"></div>
             </div>
 
         </div>
