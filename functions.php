@@ -207,6 +207,8 @@ function load_contain($post_type, $post_categorie = '', $format = '', $order = '
         'post_type'      => $post_type,
         'posts_per_page' => $post_number,
         'paged'          => $page,
+        'meta_key'       => 'photo_year',//tri avec le champs de CPT et pas la date WP
+        'orderby'        => 'meta_value_num',//pour traiter la valeur comme un nombre (pas une chaine)
         'order'          => $order,
     );
 
@@ -256,7 +258,7 @@ function load_more_photos($request){
 
     $post_type = 'photo';
     $post_number = 8;
-    $order = 'DESC';
+    //$order = 'DESC';la poutre dans l'oeil = 4 heures de recherche
 
     $query = load_contain(
         $post_type,
