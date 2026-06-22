@@ -58,6 +58,13 @@ body * {
   display: none !important;
 }
 
+.dashicons {
+  font-family: dashicons !important;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+}
+
 .primary-navigation .menu-container ul {
   display: flex;
   flex-direction: row;
@@ -285,13 +292,50 @@ nav.footer-navigation .footer-navigation-wrapper .menu-item > a:hover {
   row-gap: 1vw;
 }
 #photos-catalogue .photos-thumbnail .single-link {
+  position: relative;
   width: 49%;
+  cursor: default;
 }
 #photos-catalogue .photos-thumbnail .single-link .gallery {
   width: 100%;
   aspect-ratio: 1/1;
   -o-object-fit: cover;
      object-fit: cover;
+}
+#photos-catalogue .photos-thumbnail .single-link .dashicons-visibility {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-decoration: none;
+  font-size: 4vw;
+  color: #ffffff;
+  opacity: 0;
+  visibility: 0;
+  transition: opacity 0.5s;
+  cursor: pointer;
+}
+#photos-catalogue .photos-thumbnail .single-link .dashicons-fullscreen-alt {
+  position: absolute;
+  top: 5%;
+  left: 95%;
+  transform: translate(-95%, -5%);
+  text-decoration: none;
+  font-size: 2.5vw;
+  color: #ffffff;
+  width: 2.5vw;
+  height: auto;
+  text-align: center;
+  border: 0.7vw solid #000000;
+  border-radius: 50%;
+  background-color: #000000;
+  opacity: 0;
+  visibility: 0;
+  transition: opacity 1s;
+  cursor: pointer;
+}
+#photos-catalogue .photos-thumbnail .single-link:hover .dashicons-visibility, #photos-catalogue .photos-thumbnail .single-link:hover .dashicons-fullscreen-alt {
+  opacity: 1;
 }
 #photos-catalogue .select-form {
   display: flex;
@@ -306,6 +350,19 @@ nav.footer-navigation .footer-navigation-wrapper .menu-item > a:hover {
   height: clamp(25px, 4.45vh, 43px);
 }
 #photos-catalogue .select-form select:hover {
+  cursor: pointer;
+}
+#photos-catalogue .button-more {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 3vw;
+}
+#photos-catalogue .button-more .more-photos {
+  width: clamp(180px, 20vw, 272px);
+  height: 50px;
+}
+#photos-catalogue .button-more .more-photos:hover {
   cursor: pointer;
 }
 

@@ -24,8 +24,8 @@
     	'taxonomy'   => 'categorie',
     	'hide_empty' => true,
 	]);
-
-	$photos_gallery = load_contain('photo', '', '','DESC', 8);
+	//récupération des 8 premières photos
+	$photos_gallery = load_contain('photo');
 	/*echo '<pre>';
 		var_dump($photos_gallery);
 	echo '</pre>';*/
@@ -76,8 +76,8 @@
 			<div class="select-form">
 				<label for="sort-photos">TRIER PAR</label>
 				<select id="sort-photos" name="sort-photos">
-					<option value="desc">À partir des plus récentes</option>
-					<option value="asc">À partir des plus anciennes</option>
+					<option value="DESC">À partir des plus récentes</option>
+					<option value="ASC">À partir des plus anciennes</option>
 				</select>
 			</div>
 		</div>
@@ -85,20 +85,36 @@
 
 	<!--Le html du catalogue de photos-->
 
-	<div class="photos-thumbnail">
-		<?php
-			foreach ($photos_gallery as $photo_gallery) :
-		?>
-		<a class="single-link" href="<?php echo esc_url($photo_gallery['permalink']);?>">
-			<img class="gallery" src="<?php echo esc_url($photo_gallery['url']);?>" alt="<?php echo $photo_gallery['title'];?>"/>
-			</a>
-		<?php
-			endforeach;
-		?>
+	<div id="gallery" class="photos-thumbnail">
 
+	<?php while($photos_gallery->have_posts()) : $photos_gallery->the_post();
+		$image_id = SCF::get('photo_file');
+		$image_url = wp_get_attachment_image_url($image_id, 'full');
+	?>
 
+		<a class="single-link" href="<?php the_permalink();?>">
+			<img class="gallery" src="<?php echo esc_url($image_url); ?>" alt="<?php the_title(); ?>"/>
+			<span class="dashicons dashicons-visibility" title="Voir les détails"></span>
+			<span class="dashicons dashicons-fullscreen-alt" title="Plein écran"></span>	
+		</a>
+
+		<?php
+			endwhile; 
+			wp_reset_postdata();
+		?>
 
 	</div>
+
+	<!--Le html du bouton 'Charger plus'-->
+
+	<div class="button-more">
+		<button class="more-photos">Charger plus</button>
+	</div>
+
+	<script>
+    	const apiUrl = "<?php echo get_rest_url(null,'photos/v1/load'); ?>";
+	</script>
+	
 </section>
 
 <?php
@@ -106,6 +122,6 @@
 
 	endwhile;
 	
-	the_content();
+	//the_content();
 
 	get_footer();

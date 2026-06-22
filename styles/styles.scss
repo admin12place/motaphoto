@@ -77,6 +77,13 @@
     display: none!important;
 }
 
+.dashicons {
+    font-family: dashicons !important;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+}
+
 //*****************LES MENUS*************************
 
 .primary-navigation {//Menu principal
@@ -320,16 +327,51 @@ nav.footer-navigation {//menu secondaire
         column-gap: 1vw;
         row-gap: 1vw;
         .single-link {
+            position: relative;
             width: 49%;
+            cursor:default;
             .gallery {
                 width: 100%;
                 aspect-ratio: 1 / 1;
                 object-fit: cover;
-                &:hover {
-                    //le petit oeil
-                }
             }
-        } 
+        }
+        .single-link .dashicons-visibility {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-decoration: none;
+            font-size: 4vw;
+            color: $white-white;
+            opacity: 0;
+            visibility: 0;
+            transition: opacity .5s;
+            cursor: pointer;
+        }
+        .single-link .dashicons-fullscreen-alt {
+            position: absolute;
+            top: 5%;
+            left: 95%;
+            transform: translate(-95%, -5%);
+            text-decoration: none;
+            font-size: 2.5vw;
+            color: $white-white;
+            width: 2.5vw;
+            height: auto;
+            text-align: center;
+            border: 0.7vw solid $black-black;
+            border-radius: 50%;
+            background-color: $black-black;
+            opacity: 0;
+            visibility: 0;
+            transition: opacity 1s;
+            cursor: pointer;
+        }   
+        .single-link:hover .dashicons-visibility,  .single-link:hover .dashicons-fullscreen-alt {
+            opacity: 1;
+        }
+
     }
     .select-form {
         display: flex;
@@ -343,6 +385,19 @@ nav.footer-navigation {//menu secondaire
             height: clamp(25px, 4.45vh, 43px);
             &:hover {
                 cursor: pointer;
+            }
+        }
+    }
+    .button-more {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 3vw;
+        .more-photos {
+            width: clamp(180px, 20vw, 272px);
+            height: 50px;
+            &:hover {
+            cursor: pointer;
             }
         }
     }

@@ -4,7 +4,8 @@ register_nav_menus([
     'footer'  => 'Menu footer',
 ]);
 
-add_action( 'wp_enqueue_scripts', 'wpm_enqueue_styles' );
+/***************************/
+
 
 function wpm_enqueue_styles() {//Ref au theme parent
 	wp_enqueue_style( 
@@ -12,10 +13,18 @@ function wpm_enqueue_styles() {//Ref au theme parent
 		get_stylesheet_uri()
 	);
 }
+add_action( 'wp_enqueue_scripts', 'wpm_enqueue_styles' );
 
 /***************************/
 
-add_action('wp_enqueue_scripts', 'mota_enqueue_style');
+
+function load_dashicons_frontend() {//chargement des dashicons (oeil)
+    wp_enqueue_style('dashicons');
+}
+add_action('wp_enqueue_scripts', 'load_dashicons_frontend');
+
+/***************************/
+
 
 function mota_enqueue_style() { //le css perso
     wp_enqueue_style(
@@ -24,39 +33,98 @@ function mota_enqueue_style() { //le css perso
         array(),
         filemtime(get_stylesheet_directory() . '/styles/styles.css'));
 };
+add_action('wp_enqueue_scripts', 'mota_enqueue_style');
 
 /*****************************/
 
-add_action( 'wp_enqueue_scripts', 'mota_enqueue_scripts_perso' );
 
-function mota_enqueue_scripts_perso() { //le js perso
+function mota_enqueue_script_global() { //le js global
     wp_enqueue_script(
-        'scripts',
-        get_stylesheet_directory_uri() . '/js/scripts.js',
+        'script-global',
+        get_stylesheet_directory_uri() . '/js/script-global.js',
         array(),
-        filemtime(get_stylesheet_directory() . '/js/scripts.js'), true);
+        filemtime(get_stylesheet_directory() . '/js/script-global.js'), true);
 
     wp_localize_script(
-        'scripts',
+        'script-global',
         'ajax_object',
         array(
             'ajax_url' => admin_url('admin-ajax.php')
         )
     );
 }
+add_action( 'wp_enqueue_scripts', 'mota_enqueue_script_global' );
 
 /*****************************/
 
-add_action('wp_enqueue_scripts', 'theme_enqueue_scripts');
+
+function mota_enqueue_script_single() { //le js de la page single
+    wp_enqueue_script(
+        'script-single',
+        get_stylesheet_directory_uri() . '/js/script-single.js',
+        array(),
+        filemtime(get_stylesheet_directory() . '/js/script-single.js'), true);
+
+    wp_localize_script(
+        'script-single',
+        'ajax_object',
+        array(
+            'ajax_url' => admin_url('admin-ajax.php')
+        )
+    );
+}
+add_action( 'wp_enqueue_scripts', 'mota_enqueue_script_single' );
+
+/*****************************/
+
+
+function mota_enqueue_related_photos() { //le js de la page single
+    wp_enqueue_script(
+        'related-photos',
+        get_stylesheet_directory_uri() . '/js/related-photos.js',
+        array(),
+        filemtime(get_stylesheet_directory() . '/js/related-photos.js'), true);
+
+    wp_localize_script(
+            'related-photos',
+        'ajax_object',
+        array(
+            'ajax_url' => admin_url('admin-ajax.php')
+        )
+    );
+}
+add_action( 'wp_enqueue_scripts', 'mota_enqueue_related_photos' );
+
+/*****************************/
+
+
+function mota_enqueue_script_gallery() {//le js de la gallery
+    wp_enqueue_script(
+        'script-gallery',
+        get_stylesheet_directory_uri() . '/js/script-gallery.js',
+        array(),
+        filemtime(get_stylesheet_directory() . '/js/script-gallery.js'), true);
+
+    wp_localize_script(
+            'script-gallery',
+        'ajax_object',
+        array(
+            'ajax_url' => admin_url('admin-ajax.php')
+        )
+    );
+}
+add_action( 'wp_enqueue_scripts', 'mota_enqueue_script_gallery' );
+
+/*****************************/
+
 
 function theme_enqueue_scripts() {
     wp_enqueue_script('jquery');
 }
+add_action('wp_enqueue_scripts', 'theme_enqueue_scripts');
 
 /*****************************/
 
-add_action('wp_ajax_load_related_photos', 'load_related_photos');
-add_action('wp_ajax_nopriv_load_related_photos', 'load_related_photos');
 
 function load_related_photos() {
 
@@ -110,63 +178,120 @@ function load_related_photos() {
 
     wp_die();
 }
+add_action('wp_ajax_load_related_photos', 'load_related_photos');
+add_action('wp_ajax_nopriv_load_related_photos', 'load_related_photos');
 
-/*******************************/
+/*********API WP pour le chargement des photos*********/
 
-function load_contain($post_type, $post_categorie = '', $format = '', $order = 'DESC', $post_number = -1) {
+
+add_action('rest_api_init', function(){
+
+register_rest_route(
+    'photos/v1',
+    '/load/',
+    array(
+        'methods'=>'GET',
+        'callback'=>'load_more_photos'
+    )
+);
+
+});
+
+/*******Fonction de chargement initial de la page*******/
+
+
+function load_contain($post_type, $post_categorie = '', $format = '', $order = 'DESC', 
+                        $post_number = 8, $page = 1) {
+
     $args = array(
-        'post_type' => $post_type,
+        'post_type'      => $post_type,
         'posts_per_page' => $post_number,
-        'order'         => $order );
+        'paged'          => $page,
+        'order'          => $order,
+    );
 
     if (!empty($post_categorie)) {
-            $args['tax_query'] = array(
-                array(
-                    'taxonomy' => 'categorie',
-                    'field'    => 'slug',
-                    'terms'    => $post_categorie
-                )
-            );
-        }
+
+        $args['tax_query'] = array(
+            array(
+                'taxonomy' => 'categorie',
+                'field'    => 'slug',
+                'terms'    => $post_categorie,
+            )
+        );
+
+    }
 
     if (!empty($format)) {
-        $args['meta_query'][] = [
-            'key'   => 'photo_format',
-            'value' => $format,
-            'compare'   => '=',
-        ];
+
+        $args['meta_query'] = array(
+            array(
+                'key'     => 'photo_format',
+                'value'   => $format,
+                'compare' => '='
+            )
+        );
+
     }
 
-    $query_load_contain = new WP_Query($args);
+    if (!empty($order)) {
 
-    $photos = array();
+        $args['orderby'] = 'photo_year';
+        $args['order']   = $order;
 
-    while ($query_load_contain->have_posts()) {
+    }
 
-        $query_load_contain->the_post();
-        $photo_categorie = array();
-        $cats = get_the_terms(get_the_ID(), 'categorie');
+    return new WP_Query($args);
+}
 
-        if ($cats && !is_wp_error($cats)) {
-            foreach ($cats as $cat) {
-                $photo_categorie[] = $cat->name;
-            }
+
+/* Fonction de chargement via le bouton 'charger plus'*/
+
+function load_more_photos($request){
+
+    $page = (int) $request->get_query_params()['paged'];
+    $categorie = $request->get_param('category');
+    $format = $request->get_param('format');
+    $order = $request->get_param('sort');
+
+    $post_type = 'photo';
+    $post_number = 8;
+    $order = 'DESC';
+
+    $query = load_contain(
+        $post_type,
+        $categorie,
+        $format,
+        $order,
+        $post_number,
+        $page
+    );
+
+   
+    $photos = [];
+
+    if ($query && $query->have_posts()) {
+
+        while ($query->have_posts()) {
+            $query->the_post();
+
+            $image_id = SCF::get('photo_file', get_the_ID());
+            $image_url = wp_get_attachment_image_url($image_id, 'full');
+
+            $photos[] = [
+                'id'    => get_the_ID(),
+                'title' => get_the_title(),
+                'image' => $image_url,
+                'url'   => get_permalink()
+            ];
         }
 
-        $photos[] = array(
-            'id'         => get_the_ID(),
-            'permalink'  => get_permalink(),
-            'url'        => wp_get_attachment_url(SCF::get('photo_file')),
-            'title'      => SCF::get('photo_title'),
-            'reference'  => SCF::get('photo_reference'),
-            'year'       => SCF::get('photo_year'),
-            'type'       => SCF::get('photo_type'),
-            'format'     => SCF::get('photo_format'),
-            'categories' => $photo_categorie
-        );
+        wp_reset_postdata();
     }
 
-    wp_reset_postdata();
-
-    return $photos;
+    return [
+        'photos'    => $photos,
+        'max_pages' => $query ? $query->max_num_pages : 0,
+        'debug_page'=> $page
+    ];
 }
