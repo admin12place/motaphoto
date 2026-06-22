@@ -247,7 +247,7 @@ function load_contain($post_type, $post_categorie = '', $format = '', $order = '
 }
 
 
-/* Fonction de chargement via le bouton 'charger plus'*/
+/* Fonction de re-chargement via les select et le bouton 'charger plus'*/
 
 function load_more_photos($request){
 
