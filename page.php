@@ -92,11 +92,13 @@
 		$image_url = wp_get_attachment_image_url($image_id, 'full');
 	?>
 
-		<a class="single-link" href="<?php the_permalink();?>">
+		<div class="single-link">
 			<img class="gallery" src="<?php echo esc_url($image_url); ?>" alt="<?php the_title(); ?>"/>
-			<span class="dashicons dashicons-visibility" title="Voir les détails"></span>
+			<a href="<?php the_permalink();?>">
+				<span class="dashicons dashicons-visibility" title="Voir les détails"></span>
+			</a>
 			<span class="dashicons dashicons-fullscreen-alt" title="Plein écran"></span>	
-		</a>
+		</div>
 
 		<?php
 			endwhile; 

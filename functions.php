@@ -78,7 +78,7 @@ add_action( 'wp_enqueue_scripts', 'mota_enqueue_script_single' );
 /*****************************/
 
 
-function mota_enqueue_related_photos() { //le js de la page single
+function mota_enqueue_related_photos() { //le js des photos connexes
     wp_enqueue_script(
         'related-photos',
         get_stylesheet_directory_uri() . '/js/related-photos.js',
@@ -118,7 +118,7 @@ add_action( 'wp_enqueue_scripts', 'mota_enqueue_script_gallery' );
 /*****************************/
 
 
-function theme_enqueue_scripts() {
+function theme_enqueue_scripts() {//le jquery
     wp_enqueue_script('jquery');
 }
 add_action('wp_enqueue_scripts', 'theme_enqueue_scripts');
@@ -181,7 +181,7 @@ function load_related_photos() {
 add_action('wp_ajax_load_related_photos', 'load_related_photos');
 add_action('wp_ajax_nopriv_load_related_photos', 'load_related_photos');
 
-/*********API WP pour le chargement des photos*********/
+/*********API WP pour le chargement des photos (endpoint)*********/
 
 
 add_action('rest_api_init', function(){
@@ -207,7 +207,7 @@ function load_contain($post_type, $post_categorie = '', $format = '', $order = '
         'post_type'      => $post_type,
         'posts_per_page' => $post_number,
         'paged'          => $page,
-        'meta_key'       => 'photo_year',//tri avec le champs de CPT et pas la date WP
+        'meta_key'       => 'photo_year',//tri avec le champs de SCF et pas la date WP
         'orderby'        => 'meta_value_num',//pour traiter la valeur comme un nombre (pas une chaine)
         'order'          => $order,
     );
@@ -236,13 +236,6 @@ function load_contain($post_type, $post_categorie = '', $format = '', $order = '
 
     }
 
-    if (!empty($order)) {
-
-        $args['orderby'] = 'photo_year';
-        $args['order']   = $order;
-
-    }
-
     return new WP_Query($args);
 }
 
@@ -251,10 +244,13 @@ function load_contain($post_type, $post_categorie = '', $format = '', $order = '
 
 function load_more_photos($request){
 
-    $page = (int) $request->get_query_params()['paged'];
-    $categorie = $request->get_param('category');
-    $format = $request->get_param('format');
-    $order = $request->get_param('sort');
+    $page = (int) ($request->get_param('paged') ?? 1);//en cas de pb page 1 forcée
+    $categorie = $request->get_param('category') ?? '';
+    $format = $request->get_param('format') ?? '';
+    $order = strtoupper($request->get_param('sort') ?? 'DESC');
+        if (!in_array($order, ['ASC', 'DESC'])) {//valeur de $order valide
+            $order = 'DESC';
+        }
 
     $post_type = 'photo';
     $post_number = 8;
@@ -293,7 +289,6 @@ function load_more_photos($request){
 
     return [
         'photos'    => $photos,
-        'max_pages' => $query ? $query->max_num_pages : 0,
-        'debug_page'=> $page
+        'max_pages' => $query ? $query->max_num_pages : 0
     ];
 }

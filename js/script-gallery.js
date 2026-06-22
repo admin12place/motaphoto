@@ -27,6 +27,15 @@ document.addEventListener('DOMContentLoaded', () => {
         sort: 'DESC',
     };
 
+    const photoDisplayer = (photo) => `
+    <div class="single-link">
+        <img class="gallery" src="${photo.image}" alt="${photo.title}">
+        <a href="${photo.url}">
+            <span class="dashicons dashicons-visibility" title="Voir les détails"></span>
+        </a>
+        <span class="dashicons dashicons-fullscreen-alt" title="Plein écran"></span>
+    </div>`;
+
     //Fin de l'événement si un de ces elements n'existe pas
     if (!button || !gallery || !categorieSelect || !formatSelect || !sortSelect) {
         return;
@@ -51,16 +60,11 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(data => {
 
             data.photos.forEach(photo => {
-                gallery.insertAdjacentHTML('beforeend', `
-                    <a class="single-link" href="${photo.url}">
-                        <img class="gallery" src="${photo.image}" alt="${photo.title}">
-                        <span class="dashicons dashicons-visibility" title="Voir les détails"></span>
-			            <span class="dashicons dashicons-fullscreen-alt" title="Plein écran"></span>
-                    </a>
-                `);
+                gallery.insertAdjacentHTML('beforeend', photoDisplayer(photo));
             });
 
             endMorePhotosButton (sortSearchState.paged, data.max_pages, button);
+
         })
 
         .catch(err => console.error("AJAX ERROR:", err));
@@ -107,15 +111,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 data.photos.forEach(photo => {
-                gallery.insertAdjacentHTML('beforeend', `
-                    <a class="single-link" href="${photo.url}">
-                        <img class="gallery" src="${photo.image}" alt="${photo.title}">
-                        <span class="dashicons dashicons-visibility" title="Voir les détails"></span>
-			            <span class="dashicons dashicons-fullscreen-alt" title="Plein écran"></span>
-                    </a>
-                `);
+                    gallery.insertAdjacentHTML('beforeend', photoDisplayer(photo));
             });
+
             endMorePhotosButton (sortSearchState.paged, data.max_pages, button);
+
         });
     }
 })
