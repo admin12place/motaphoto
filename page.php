@@ -89,13 +89,14 @@
 
 	<?php while($photos_gallery->have_posts()) : $photos_gallery->the_post();
 		$image_id = SCF::get('photo_file');
+		$image_title = SCF::get('photo_title');
 		$image_url = wp_get_attachment_image_url($image_id, 'full');
 	?>
 
 		<div class="single-link">
 			<img class="gallery" src="<?php echo esc_url($image_url); ?>" alt="<?php the_title(); ?>"/>
 			<a href="<?php the_permalink();?>">
-				<span class="dashicons dashicons-visibility" title="Voir les détails"></span>
+				<span class="dashicons dashicons-visibility" title="Voir les détails de <?php echo $image_title;?>"></span>
 			</a>
 			<span class="dashicons dashicons-fullscreen-alt" title="Plein écran"></span>	
 		</div>

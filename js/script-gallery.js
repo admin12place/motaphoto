@@ -27,11 +27,12 @@ document.addEventListener('DOMContentLoaded', () => {
         sort: 'DESC',
     };
 
+    //constante d'affichage des images (maintenabilité)
     const photoDisplayer = (photo) => `
     <div class="single-link">
         <img class="gallery" src="${photo.image}" alt="${photo.title}">
         <a href="${photo.url}">
-            <span class="dashicons dashicons-visibility" title="Voir les détails"></span>
+            <span class="dashicons dashicons-visibility" title="Voir les détails de ${photo.title}"></span>
         </a>
         <span class="dashicons dashicons-fullscreen-alt" title="Plein écran"></span>
     </div>`;
@@ -44,16 +45,17 @@ document.addEventListener('DOMContentLoaded', () => {
     /*PAGINATION*/
     
     button.addEventListener('click', () => {
+
         sortSearchState.paged++;
 
         const newSortParams = new URLSearchParams({
             paged:      sortSearchState.paged,
             category:   sortSearchState.category,
             format:     sortSearchState.format,
-            sort:       sortSearchState.sort,
+            sort:       sortSearchState.sort
         });
 
-        
+        console.log(newSortParams);
 
         fetch(apiUrl + '?' + newSortParams)
         .then(responsePagination => responsePagination.json())
@@ -62,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
             data.photos.forEach(photo => {
                 gallery.insertAdjacentHTML('beforeend', photoDisplayer(photo));
             });
-
+console.log(data.photos);
             endMorePhotosButton (sortSearchState.paged, data.max_pages, button);
 
         })
@@ -102,6 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const newSortParams =  new URLSearchParams(sortSearchState);
 
         console.log(newSortParams);
+        
 
         fetch(apiUrl + '?' + newSortParams)
             .then(responseFilters => responseFilters.json())
@@ -115,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             endMorePhotosButton (sortSearchState.paged, data.max_pages, button);
-
+console.log(data.photos);
         });
     }
 })
