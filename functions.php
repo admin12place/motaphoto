@@ -18,7 +18,7 @@ add_action( 'wp_enqueue_scripts', 'wpm_enqueue_styles' );
 /***************************/
 
 
-function load_dashicons_frontend() {//chargement des dashicons (oeil)
+function load_dashicons_frontend() {//chargement des dashicons
     wp_enqueue_style('dashicons');
 }
 add_action('wp_enqueue_scripts', 'load_dashicons_frontend');
@@ -116,6 +116,27 @@ function mota_enqueue_script_gallery() {//le js de la gallery
 add_action( 'wp_enqueue_scripts', 'mota_enqueue_script_gallery' );
 
 /*****************************/
+
+function mota_enqueue_script_lightbox() {//le js de la lightbox
+    wp_enqueue_script(
+        'script-lightbox',
+        get_stylesheet_directory_uri() . '/js/script-lightbox.js',
+        array(),
+        filemtime(get_stylesheet_directory() . '/js/script-lightbox.js'), true);
+
+    /*wp_localize_script(
+            'script-lightbox',
+        'ajax_object',
+        array(
+            'ajax_url' => admin_url('admin-ajax.php')
+        )
+    );*/
+}
+add_action( 'wp_enqueue_scripts', 'mota_enqueue_script_lightbox' );
+
+/*****************************/
+
+
 
 
 function theme_enqueue_scripts() {//le jquery

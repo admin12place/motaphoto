@@ -25,6 +25,7 @@
 		
 	</footer><!-- #colophon -->
 	<?php get_template_part( 'template-parts/contact_modal' ); ?><!--Modale de contact-->
+	<?php get_template_part( 'template-parts/lightbox' ); ?><!--La lightbox-->
 </div><!-- #page -->
 
 <?php wp_footer(); ?>

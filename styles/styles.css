@@ -556,6 +556,77 @@ nav.footer-navigation .footer-navigation-wrapper .menu-item > a:hover {
   text-align: center;
 }
 
+/***********************LA LIGHTBOX***********************/
+#lightbox-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  color: #ffffff;
+  background-color: rgba(0, 0, 0, 0.8);
+  opacity: 1;
+  visibility: 1;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+  overflow: hidden;
+}
+#lightbox-container .undisplayed {
+  visibility: 0;
+  opacity: 0;
+}
+#lightbox-container .close-button {
+  display: flex;
+  height: 15vh;
+}
+#lightbox-container .close-button .dashicons-no {
+  position: fixed;
+  top: 4vh;
+  right: 4vw;
+  font-size: 40px;
+  font-weight: 300;
+  color: #ffffff;
+  cursor: pointer;
+}
+#lightbox-container .content-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+#lightbox-container .content-container .left-arrow, #lightbox-container .content-container .right-arrow {
+  width: 10vw;
+  height: -moz-fit-content;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#lightbox-container .content-container .left-arrow:hover, #lightbox-container .content-container .right-arrow:hover {
+  cursor: pointer;
+}
+#lightbox-container .content-container .left-arrow .arrow-left, #lightbox-container .content-container .left-arrow .arrow-right, #lightbox-container .content-container .right-arrow .arrow-left, #lightbox-container .content-container .right-arrow .arrow-right {
+  width: 60px;
+}
+#lightbox-container .content-container .image-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 60vw;
+  height: 70vh;
+}
+#lightbox-container .content-container .image-container .image-details {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  padding: 0 5px;
+}
+#lightbox-container .content-container .image-container .img-full {
+  height: 80vh;
+  min-height: 80%;
+  width: 100%;
+}
+
 /*********************MEDIA QUERIES***********************/
 @media (max-width: 958px) {
   #photos-catalogue {
