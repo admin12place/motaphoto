@@ -26,9 +26,6 @@
 	]);
 	//récupération des 8 premières photos
 	$photos_gallery = load_contain('photo');
-	/*echo '<pre>';
-		var_dump($photos_gallery);
-	echo '</pre>';*/
 ?>
 <?php
 	while ( have_posts() ) :
@@ -91,10 +88,25 @@
 		$image_id = SCF::get('photo_file');
 		$image_title = SCF::get('photo_title');
 		$image_url = wp_get_attachment_image_url($image_id, 'full');
+
+		$cat = get_the_terms(get_the_ID(), 'categorie');//les catégories depuis le CPT personnalisé
+		$image_cats = [];
+		if ($cat && !is_wp_error($cat)) {
+    		foreach ($cat as $cat_index) {
+        		$image_cats[] = $cat_index->name;
+    		}
+			$image_cat = implode(', ', $image_cats);
+		}
+
+		$image_ref = SCF::get('photo_reference');
 	?>
 
 		<div class="single-link">
-			<img class="gallery" src="<?php echo esc_url($image_url); ?>" alt="<?php the_title(); ?>"/>
+			<img class="gallery" 
+				data-reference="<?php echo esc_attr($image_ref); ?>"
+				data-categorie="<?php echo esc_attr($image_cat); ?>" 
+				src="<?php echo esc_url($image_url); ?>" alt="<?php the_title(); ?>"/>
+
 			<a href="<?php the_permalink();?>">
 				<span class="dashicons dashicons-visibility" title="Voir les détails de <?php echo $image_title;?>"></span>
 			</a>

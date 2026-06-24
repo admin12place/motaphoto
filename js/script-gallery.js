@@ -30,17 +30,19 @@ document.addEventListener('DOMContentLoaded', () => {
     //constante d'affichage des images (maintenabilité)
     const photoDisplayer = (photo) => `
     <div class="single-link">
-        <img class="gallery" src="${photo.image}" alt="${photo.title}">
+        <img class="gallery" 
+        data-reference="${photo.reference}"
+        data-categorie="${photo.categorie}"
+        src="${photo.image}" alt="${photo.title}">
         <a href="${photo.url}">
             <span class="dashicons dashicons-visibility" title="Voir les détails de ${photo.title}"></span>
         </a>
         <span class="dashicons dashicons-fullscreen-alt" title="Plein écran"></span>
     </div>`;
-
+  
     //Fin de l'événement si un de ces elements n'existe pas
-    if (!button || !gallery || !categorieSelect || !formatSelect || !sortSelect) {
-        return;
-    }
+    if (!button || !gallery || !categorieSelect || !formatSelect || !sortSelect) return;
+    
     
     /*PAGINATION*/
     
@@ -63,8 +65,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             data.photos.forEach(photo => {
                 gallery.insertAdjacentHTML('beforeend', photoDisplayer(photo));
+                console.log(photo.id);
             });
-console.log(data.photos);
+            data.photos = []
             endMorePhotosButton (sortSearchState.paged, data.max_pages, button);
 
         })
@@ -115,10 +118,11 @@ console.log(data.photos);
 
                 data.photos.forEach(photo => {
                     gallery.insertAdjacentHTML('beforeend', photoDisplayer(photo));
+                    console.log(photo.id);
             });
-
+            data.photos = []
             endMorePhotosButton (sortSearchState.paged, data.max_pages, button);
-console.log(data.photos);
+
         });
     }
 })

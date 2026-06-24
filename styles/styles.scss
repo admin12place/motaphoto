@@ -603,7 +603,7 @@ nav.footer-navigation {//menu secondaire
     width: 100vw;
     height: 100vh;
     color: $white-white;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.9);
     opacity: 1;
     visibility: 1;
     transition: opacity 0.5s ease, visibility 0.5s ease;
@@ -613,17 +613,24 @@ nav.footer-navigation {//menu secondaire
         opacity: 0;
     }
     .close-button {
-        display: flex;
+        position: relative;
         height: 15vh;
-        //background-color: red;
         .dashicons-no{
             position: fixed;
-            top: 4vh;
+            top: 6vh;
             right: 4vw;
+            width: 40px;
+            height: 40px;
             font-size: 40px;
-            font-weight: 300;
             color: $white-white;
             cursor: pointer;
+            transition: transform 0.6s ease;
+            transform-origin: center;
+            opacity: 0.6;
+            &:hover {
+                transform: rotate(180deg);
+                opacity: 1;
+            }
         }
     }
     .content-container {
@@ -636,9 +643,11 @@ nav.footer-navigation {//menu secondaire
             height: fit-content;
             display: flex;
             align-items: center;
-            justify-content: center;
+            opacity: 0.5;
+            transition: 0.3s ease;
             &:hover {
                 cursor: pointer;
+                opacity: 1;
             }
             .arrow-left, .arrow-right {
                 width: 60px;
@@ -648,20 +657,21 @@ nav.footer-navigation {//menu secondaire
             display: flex;
             flex-direction: column;
             align-items: center;
-            width: 60vw;
-            height: 70vh;
+            max-width: 80vw;
+            height: 60vh;
             //border: 1px solid red;
             .image-details {
                 display: flex;
                 flex-direction: row;
                 width: 100%;
                 justify-content: space-between;
-                padding: 0 5px;
+                padding: 0;
             }
             .img-full {
-                height: 80vh;
-                min-height: 80%;
-                width: 100%;
+                height: 60vh;
+                //min-height: 80vh;
+                width: auto;
+                object-fit: contain;
             }
         }
     }

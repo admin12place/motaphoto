@@ -225,13 +225,15 @@ function load_contain($post_type, $post_categorie = '', $format = '', $order = '
                         $post_number = 8, $page = 1) {
 
     $args = array(
-        'post_type'      => $post_type,
-        'posts_per_page' => $post_number,
-        'paged'          => $page,
-        'meta_key'       => 'photo_year',//tri avec le champs de SCF et pas la date WP
-        'orderby'        => 'meta_value_num',//pour traiter la valeur comme un nombre (pas une chaine)
-        'order'          => $order,
-    );
+    'post_type'      => $post_type,
+    'posts_per_page' => $post_number,
+    'paged'          => $page,
+    'meta_key'       => 'photo_year', //tri avec le champs de SCF et pas la date WP
+    'orderby'        => array(
+        'meta_value_num' => $order, //pour traiter la valeur comme un nombre (pas une chaine)
+        'ID'             => $order, //tri aussi par id
+    ),
+);
 
     if (!empty($post_categorie)) {
 
@@ -275,7 +277,6 @@ function load_more_photos($request){
 
     $post_type = 'photo';
     $post_number = 8;
-    //$order = 'DESC';la poutre dans l'oeil = 4 heures de recherche
 
     $query = load_contain(
         $post_type,
@@ -286,21 +287,31 @@ function load_more_photos($request){
         $page
     );
 
-   
-    $photos = [];
-
     if ($query && $query->have_posts()) {
 
         while ($query->have_posts()) {
             $query->the_post();
 
             $image_id = SCF::get('photo_file', get_the_ID());
+            $image_ref = SCF::get('photo_reference');
+            
+            $cat = get_the_terms(get_the_ID(), 'categorie');
+		    $image_cats = [];
+		    if ($cat && !is_wp_error($cat)) {
+    		    foreach ($cat as $cat_index) {
+        		    $image_cats[] = $cat_index->name;
+    		    }
+			    $image_cat = implode(', ', $image_cats);
+		    }
+            
             $image_url = wp_get_attachment_image_url($image_id, 'full');
 
             $photos[] = [
                 'id'    => get_the_ID(),
                 'title' => get_the_title(),
                 'image' => $image_url,
+                'reference' => $image_ref,
+                'categorie' => $image_cat,
                 'url'   => get_permalink()
             ];
         }
