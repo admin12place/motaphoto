@@ -104,8 +104,9 @@
 		<div class="single-link">
 			<img class="gallery" 
 				data-reference="<?php echo esc_attr($image_ref); ?>"
-				data-categorie="<?php echo esc_attr($image_cat); ?>" 
-				src="<?php echo esc_url($image_url); ?>" alt="<?php the_title(); ?>"/>
+				data-categorie="<?php echo esc_attr($image_cat); ?>"
+				data-title="<?php echo esc_attr($image_title); ?>" 
+				src="<?php echo esc_url($image_url); ?>" alt="<?php echo $image_title; ?>" title="<?php echo $image_title; ?>"/>
 
 			<a href="<?php the_permalink();?>">
 				<span class="dashicons dashicons-visibility" title="Voir les détails de <?php echo $image_title;?>"></span>

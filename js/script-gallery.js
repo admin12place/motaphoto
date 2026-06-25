@@ -33,7 +33,8 @@ document.addEventListener('DOMContentLoaded', () => {
         <img class="gallery" 
         data-reference="${photo.reference}"
         data-categorie="${photo.categorie}"
-        src="${photo.image}" alt="${photo.title}">
+        data-title="${photo.title}"
+        src="${photo.image}" alt="${photo.title}" title="${photo.title}">
         <a href="${photo.url}">
             <span class="dashicons dashicons-visibility" title="Voir les détails de ${photo.title}"></span>
         </a>
@@ -57,15 +58,12 @@ document.addEventListener('DOMContentLoaded', () => {
             sort:       sortSearchState.sort
         });
 
-        console.log(newSortParams);
-
         fetch(apiUrl + '?' + newSortParams)
         .then(responsePagination => responsePagination.json())
         .then(data => {
 
             data.photos.forEach(photo => {
                 gallery.insertAdjacentHTML('beforeend', photoDisplayer(photo));
-                console.log(photo.id);
             });
             data.photos = []
             endMorePhotosButton (sortSearchState.paged, data.max_pages, button);
@@ -73,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
         })
 
         .catch(err => console.error("AJAX ERROR:", err));
-
+        updateSelectedPhotos()
     });
 
     /*TRI ET FILTRES*/
@@ -106,9 +104,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const newSortParams =  new URLSearchParams(sortSearchState);
 
-        console.log(newSortParams);
-        
-
         fetch(apiUrl + '?' + newSortParams)
             .then(responseFilters => responseFilters.json())
             .then(data => {
@@ -118,11 +113,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 data.photos.forEach(photo => {
                     gallery.insertAdjacentHTML('beforeend', photoDisplayer(photo));
-                    console.log(photo.id);
             });
             data.photos = []
             endMorePhotosButton (sortSearchState.paged, data.max_pages, button);
 
         });
+        updateSelectedPhotos()
     }
 })

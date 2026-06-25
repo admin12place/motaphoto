@@ -231,7 +231,7 @@ function load_contain($post_type, $post_categorie = '', $format = '', $order = '
     'meta_key'       => 'photo_year', //tri avec le champs de SCF et pas la date WP
     'orderby'        => array(
         'meta_value_num' => $order, //pour traiter la valeur comme un nombre (pas une chaine)
-        'ID'             => $order, //tri aussi par id
+        'ID'             => $order, //tri aussi par id pour éviter doublons.
     ),
 );
 
