@@ -116,8 +116,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             data.photos = []
             endMorePhotosButton (sortSearchState.paged, data.max_pages, button);
-
         });
-        updateSelectedPhotos()
     }
 })

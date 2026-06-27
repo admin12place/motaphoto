@@ -11,7 +11,7 @@
         </div>
 
         <div class="image-container">
-            <img class="img-full" src=""/>
+            <img class="img-full" src="" title=""/>
             <div  class="image-details">
                 <p class="image-ref">Références</p>
                 <p class="image-cat">Catégorie</p>

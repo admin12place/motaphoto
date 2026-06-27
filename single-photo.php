@@ -58,7 +58,7 @@
         <div class="left-contain">
 
             <div class="desc-photo-single <?php echo $class_format; ?>">
-                <h2><?php echo $photo_title; ?></h2>
+                <h2 class="desc-photo-title"><?php echo $photo_title; ?></h2>
                 <span class="desc-item-photo"><?php echo "RÉFÉRENCE : " . $photo_reference; ?></span>
                 <span class="desc-item-photo"><?php echo "CATÉGORIES : " . $photo_categorie; ?></span>
                 <span class="desc-item-photo"><?php echo "FORMAT : " . $photo_format; ?></span>
@@ -69,7 +69,9 @@
         </div>
 
         <div class="img-photo-single">
-            <img class="main-image" src="<?php echo esc_url($photo_file_url);?>"/>
+            <img class="main-image" src="<?php echo esc_url($photo_file_url);?>"
+				data-title="<?php echo mb_strtolower($photo_title); ?>" />
+            <span class="dashicons dashicons-fullscreen-alt" title="Plein écran"></span>
         </div>
 
     </div>

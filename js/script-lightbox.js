@@ -1,24 +1,26 @@
 
-const lightboxMota = document.getElementById('lightbox-container');
-const closeButton = document.querySelector('.dashicons-no');
-const gallery = document.getElementById('gallery');
-const lightboxPhoto = document.querySelector('.image-container');
+const lightboxMota = document.getElementById('lightbox-container');//la lightbox
+const closeButton = document.querySelector('.dashicons-no');//icon de fermeture de la lightbox
+const gallery = document.getElementById('gallery');//la galerie de la page d'accueil
+const lightboxPhoto = document.querySelector('.image-container');//la <div> de l'image de la lightbox
 
+const rightArrow = document.querySelector('.right-arrow');//fleche de droite (avec le text)
+const leftArrow = document.querySelector('.left-arrow');//fleche de gauche (avec le texte)
 
-//fonction recréant la liste des photos affichées
 let selectedPhotos = [];
 let currentIndex = 0;
 
+//fonction recréant la liste des photos affichées
 function updateSelectedPhotos() {
-    selectedPhotos = document.querySelectorAll('.gallery');
+    selectedPhotos = document.querySelectorAll('.gallery');//tableau des photos de la page d'accueil
 }
 
+//fonction d'affichage des photos
 function displaySelectedPhoto (index) {
     const newImage = selectedPhotos[index];
     
-    //lightboxPhoto.innerHTML = '';
     lightboxPhoto.innerHTML = `
-        <img class="img-full" src="${newImage.src}" alt="${newImage.dataset.title}">
+        <img class="img-full" src="${newImage.src}" alt="${newImage.dataset.title}" title="${newImage.dataset.title}">
         <div class="image-details">
             <p class="image-ref">${newImage.dataset.reference}</p>
             <p class="image-cat">${newImage.dataset.categorie}</p>
@@ -28,7 +30,7 @@ function displaySelectedPhoto (index) {
 
 if (gallery) {
 
-    gallery.addEventListener('click', e => { //Déléguation d'événement sur l'ensemble de la gallery
+    gallery.addEventListener('click', e => { //Délégation d'événement sur l'ensemble de la gallery
         
         const fullScreenIcon = e.target.closest('.dashicons-fullscreen-alt');
             if (!fullScreenIcon) return;
@@ -54,6 +56,7 @@ if (gallery) {
     })
 }
 
+//Fermeture de la lightbox
 closeButton.addEventListener('click', () => {
     lightboxMota.classList.add('undisplayed');
     document.body.style.overflow = '';
@@ -61,8 +64,6 @@ closeButton.addEventListener('click', () => {
 
 //Flèches précédente et suivante
 
-const rightArrow = document.querySelector('.right-arrow');
-const leftArrow = document.querySelector('.left-arrow');
 
 rightArrow.addEventListener('click', () => {
     currentIndex++;
@@ -79,3 +80,24 @@ leftArrow.addEventListener('click', () => {
     }
     displaySelectedPhoto (currentIndex)
 })
+
+//Lightbox sur la page single
+
+const singleMainImage = document.querySelector('.main-image');
+const fullScreen = document.querySelector('.dashicons-fullscreen-alt');
+
+if (singleMainImage) {
+    selectedPhotos = [singleMainImage];
+    console.log(selectedPhotos)
+
+    fullScreen.addEventListener('click', () => {
+        currentIndex = 0;
+        displaySelectedPhoto(currentIndex);
+        lightboxMota.classList.remove('undisplayed');
+        document.body.style.overflow = 'hidden';
+        document.querySelectorAll('.left-arrow, .right-arrow, .image-ref, .image-cat')
+            .forEach(element => {
+                element.style.display = 'none';
+            });
+    });
+}
