@@ -110,6 +110,22 @@
     cursor: pointer;
 }
 
+.close-button {
+    position: fixed;
+    height: 7vh;
+    .dashicons-no{
+        position: fixed;
+        cursor: pointer;
+        transition: transform 0.6s ease-in-out;
+        transform-origin: center;
+        opacity: 0.6;
+        &:hover {
+            transform: rotate(180deg);
+            opacity: 1;
+        }
+    }
+}
+
 //*****************LES MENUS*************************
 
 .primary-navigation {//Menu principal
@@ -234,7 +250,7 @@ nav.footer-navigation {//menu secondaire
     }
 }
 
-//***********************LA MODALE************************
+//***********************LA MODALE DE CONTACT************************
 
 #contact-modal {
     display: flex;
@@ -242,7 +258,6 @@ nav.footer-navigation {//menu secondaire
     top: 52%;
     left: 50%;
     transform: translate(-50%, -50%);
-
     opacity: 1;
     visibility: visible;
     transition:
@@ -266,6 +281,9 @@ nav.footer-navigation {//menu secondaire
             height: 100%;
             object-fit: cover;
         }
+    }
+    .close-button {
+        display: none;
     }
     #wpcf7-f27-o1 {
         width: 100%;
@@ -626,24 +644,13 @@ nav.footer-navigation {//menu secondaire
         visibility: hidden;
     }
     .close-button {
-        position: relative;
-        height: 7vh;
-        .dashicons-no{
-            position: fixed;
+        .dashicons-no {
+            color: $white-white;
             top: 3.5vh;
             right: 4vw;
             width: 40px;
             height: 40px;
             font-size: 40px;
-            color: $white-white;
-            cursor: pointer;
-            transition: transform 0.6s ease-in-out;
-            transform-origin: center;
-            opacity: 0.6;
-            &:hover {
-                transform: rotate(180deg);
-                opacity: 1;
-            }
         }
     }
     .content-container {
@@ -806,6 +813,26 @@ nav.footer-navigation {//menu secondaire
                 }
             }
         } 
+    }
+    #contact-modal {
+        width: 98%;
+        top: 050%;
+        height: 99vh;
+        .modal-header {
+            margin: 36px 0 18px 0;
+        }
+        .close-button {
+            display: block;
+            position: fixed;
+            .dashicons-no {
+                color: $red-red;
+                width: 40px;
+                height: 40px;
+                font-size: 40px;
+                top: 00px;
+                right: 5px;
+            }
+        }
     }
     
 }

@@ -4,6 +4,7 @@
 /*MODALE DE CONTACT*/
 const siteBody = document.querySelector('.customize-support');
 const contactModal = document.getElementById('contact-modal');
+const closeContactButton = document.querySelector('.contact-no');//icon de fermeture de la modale
 
 document.addEventListener('click', (e) => {
 
@@ -20,8 +21,11 @@ document.addEventListener('click', (e) => {
         ) {
             contactModal.classList.add('hidden');
         }
-    });
+});
 
+closeContactButton.addEventListener('click', () => {
+    contactModal.classList.add('hidden');
+})
 
 /*PRÉ REMPLISSAGE DE LA REF. DE PHOTO SUR LA MODALE*/
 jQuery(function($) {
@@ -44,7 +48,7 @@ menuBurger.addEventListener('click', () => {
 })
 
 document.addEventListener('click', (e) => {
-    if (!menuContainer.contains(e.target)  && !menuBurger.contains(e.target)){
+    if ((!menuContainer.contains(e.target)  && !menuBurger.contains(e.target)) || e.target.closest('a[href="#contact"]')){
         menuContainer.classList.remove('active');
         menuBurger.classList.remove('undisplayed');
     }

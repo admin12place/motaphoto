@@ -1,6 +1,6 @@
 
 const lightboxMota = document.getElementById('lightbox-container');//la lightbox
-const closeButton = document.querySelector('.dashicons-no');//icon de fermeture de la lightbox
+const closeLightboxButton = document.querySelector('.lightbox-no');//icon de fermeture de la lightbox
 const gallery = document.getElementById('gallery');//la galerie de la page d'accueil ou l'image principale de la page single
 const lightboxPhoto = document.querySelector('.image-container');//la <div> de l'image de la lightbox
 
@@ -57,7 +57,7 @@ if (gallery) {
 }
 
 //Fermeture de la lightbox
-closeButton.addEventListener('click', () => {
+closeLightboxButton.addEventListener('click', () => {
     lightboxMota.classList.add('no-displayed');
     document.body.style.overflow = '';
 });

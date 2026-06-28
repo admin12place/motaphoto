@@ -1,7 +1,7 @@
 <section id="lightbox-container" class="no-displayed">
 
     <div class="close-button">
-        <span class="dashicons dashicons-no"></span>
+        <span class="dashicons dashicons-no lightbox-no"></span>
     </div>
 
     <div class="content-container">

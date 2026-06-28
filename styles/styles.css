@@ -89,6 +89,22 @@ body * {
   cursor: pointer;
 }
 
+.close-button {
+  position: fixed;
+  height: 7vh;
+}
+.close-button .dashicons-no {
+  position: fixed;
+  cursor: pointer;
+  transition: transform 0.6s ease-in-out;
+  transform-origin: center;
+  opacity: 0.6;
+}
+.close-button .dashicons-no:hover {
+  transform: rotate(180deg);
+  opacity: 1;
+}
+
 .primary-navigation .menu-container ul {
   display: flex;
   flex-direction: row;
@@ -232,6 +248,9 @@ nav.footer-navigation .footer-navigation-wrapper .menu-item > a:hover {
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+}
+#contact-modal .close-button {
+  display: none;
 }
 #contact-modal #wpcf7-f27-o1 {
   width: 100%;
@@ -585,26 +604,13 @@ nav.footer-navigation .footer-navigation-wrapper .menu-item > a:hover {
   opacity: 0;
   visibility: hidden;
 }
-#lightbox-container .close-button {
-  position: relative;
-  height: 7vh;
-}
 #lightbox-container .close-button .dashicons-no {
-  position: fixed;
+  color: #ffffff;
   top: 3.5vh;
   right: 4vw;
   width: 40px;
   height: 40px;
   font-size: 40px;
-  color: #ffffff;
-  cursor: pointer;
-  transition: transform 0.6s ease-in-out;
-  transform-origin: center;
-  opacity: 0.6;
-}
-#lightbox-container .close-button .dashicons-no:hover {
-  transform: rotate(180deg);
-  opacity: 1;
 }
 #lightbox-container .content-container {
   display: flex;
@@ -749,5 +755,25 @@ nav.footer-navigation .footer-navigation-wrapper .menu-item > a:hover {
   #photos-catalogue .search-sort .select-form select {
     width: 100%;
     min-width: 225px;
+  }
+  #contact-modal {
+    width: 98%;
+    top: 50%;
+    height: 99vh;
+  }
+  #contact-modal .modal-header {
+    margin: 36px 0 18px 0;
+  }
+  #contact-modal .close-button {
+    display: block;
+    position: fixed;
+  }
+  #contact-modal .close-button .dashicons-no {
+    color: #e00000;
+    width: 40px;
+    height: 40px;
+    font-size: 40px;
+    top: 0px;
+    right: 5px;
   }
 }/*# sourceMappingURL=styles.css.map */
