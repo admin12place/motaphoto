@@ -1,10 +1,10 @@
 
 const lightboxMota = document.getElementById('lightbox-container');//la lightbox
 const closeButton = document.querySelector('.dashicons-no');//icon de fermeture de la lightbox
-const gallery = document.getElementById('gallery');//la galerie de la page d'accueil
+const gallery = document.getElementById('gallery');//la galerie de la page d'accueil ou l'image principale de la page single
 const lightboxPhoto = document.querySelector('.image-container');//la <div> de l'image de la lightbox
 
-const rightArrow = document.querySelector('.right-arrow');//fleche de droite (avec le text)
+const rightArrow = document.querySelector('.right-arrow');//fleche de droite (avec le texte)
 const leftArrow = document.querySelector('.left-arrow');//fleche de gauche (avec le texte)
 
 let selectedPhotos = [];
@@ -48,7 +48,7 @@ if (gallery) {
 
         displaySelectedPhoto(currentIndex)
         
-        lightboxMota.classList.remove('undisplayed');
+        lightboxMota.classList.remove('no-displayed');
         document.body.style.overflow = 'hidden';
 
         
@@ -58,7 +58,7 @@ if (gallery) {
 
 //Fermeture de la lightbox
 closeButton.addEventListener('click', () => {
-    lightboxMota.classList.add('undisplayed');
+    lightboxMota.classList.add('no-displayed');
     document.body.style.overflow = '';
 });
 
@@ -93,7 +93,7 @@ if (singleMainImage) {
     fullScreen.addEventListener('click', () => {
         currentIndex = 0;
         displaySelectedPhoto(currentIndex);
-        lightboxMota.classList.remove('undisplayed');
+        lightboxMota.classList.remove('no-displayed');
         document.body.style.overflow = 'hidden';
         document.querySelectorAll('.left-arrow, .right-arrow, .image-ref, .image-cat')
             .forEach(element => {

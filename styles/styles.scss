@@ -73,6 +73,12 @@
     font-family: "SpaceMono", sans-serif!important;
 }
 
+#main.site-main {
+    .wp-block-heading, .wp-block-paragraph {
+        margin: 3vh clamp(10px, 9.2vw, 146px);
+    }
+}
+
 .undisplayed {
     display: none!important;
 }
@@ -182,7 +188,7 @@ nav.footer-navigation {//menu secondaire
         margin: 0 clamp(10px, 9.2vw, 146px);
         .header-logo {
             height: 14px;
-            margin: 31px 0px 35px 0px;
+            margin: 37px 0px 33px 0px;
         }
         .burger {
             display: none;
@@ -525,7 +531,7 @@ nav.footer-navigation {//menu secondaire
                     &:hover {
                         transform: scale(1.2);
                         opacity: 0.5;
-                        transition: 0.5s ease;
+                        transition: 0.5s;
                         cursor: pointer;
                     }
                 }
@@ -549,7 +555,7 @@ nav.footer-navigation {//menu secondaire
                     border: 1px solid $black-black;
                     opacity: 0;
                     pointer-events: none;
-                    transition: opacity .5s;
+                    transition: opacity 0.5s ease;
                     &.displayed {
                         opacity: 1;
                         
@@ -612,13 +618,12 @@ nav.footer-navigation {//menu secondaire
     height: 100vh;
     color: $white-white;
     background-color: rgba(0, 0, 0, 0.9);
+    visibility: visible;
     opacity: 1;
-    visibility: 1;
-    transition: opacity 0.5s ease, visibility 0.5s ease;
-    overflow: hidden;
-    .undisplayed {
-        visibility: 0;
+    transition: opacity 1s ease, visibility 1s ease;
+    &.no-displayed {
         opacity: 0;
+        visibility: hidden;
     }
     .close-button {
         position: relative;
@@ -632,7 +637,7 @@ nav.footer-navigation {//menu secondaire
             font-size: 40px;
             color: $white-white;
             cursor: pointer;
-            transition: transform 0.6s ease;
+            transition: transform 0.6s ease-in-out;
             transform-origin: center;
             opacity: 0.6;
             &:hover {
@@ -686,6 +691,8 @@ nav.footer-navigation {//menu secondaire
                 width: 90%;
                 max-height: 90vh;
                 object-fit: contain;
+                opacity: 1;
+                transition: opacity 0.4s ease;
             }
         }
     }

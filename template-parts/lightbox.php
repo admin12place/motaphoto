@@ -1,4 +1,4 @@
-<section id="lightbox-container" class="undisplayed">
+<section id="lightbox-container" class="no-displayed">
 
     <div class="close-button">
         <span class="dashicons dashicons-no"></span>

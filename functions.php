@@ -296,8 +296,11 @@ function load_more_photos($request){
             $image_ref = SCF::get('photo_reference');
             
             $cat = get_the_terms(get_the_ID(), 'categorie');
-		    $image_cats = [];
+            
+            $image_cat = '';
+		    
 		    if ($cat && !is_wp_error($cat)) {
+                $image_cats = [];
     		    foreach ($cat as $cat_index) {
         		    $image_cats[] = $cat_index->name;
     		    }

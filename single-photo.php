@@ -37,9 +37,12 @@
 
     $photo_categorie = [];
         $cats = get_the_terms(get_the_ID(), 'categorie');
+        $photo_categorie = mb_strtoupper('néant');
         if ($cats && !is_wp_error($cats)) {
-            foreach ($cats as $cat) { $photo_categorie[] = $cat->name; } }
-    $photo_categorie =  mb_strtoupper (implode (', ', $photo_categorie), 'UTF-8');
+            $photo_categorie = [];
+            foreach ($cats as $cat) { $photo_categorie[] = $cat->name; }
+        $photo_categorie =  mb_strtoupper (implode (', ', $photo_categorie), 'UTF-8');
+        }
 ?>
 
 <script>
