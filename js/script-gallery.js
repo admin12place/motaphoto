@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if(reset === true){
                     gallery.innerHTML = '';
                 }
-
+    
                 data.photos.forEach(photo => {
                     gallery.insertAdjacentHTML('beforeend', photoDisplayer(photo));
             });

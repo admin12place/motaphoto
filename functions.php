@@ -136,16 +136,12 @@ add_action( 'wp_enqueue_scripts', 'mota_enqueue_script_lightbox' );
 
 /*****************************/
 
-
-
-
 function theme_enqueue_scripts() {//le jquery
     wp_enqueue_script('jquery');
 }
 add_action('wp_enqueue_scripts', 'theme_enqueue_scripts');
 
 /*****************************/
-
 
 function load_related_photos() {
 
@@ -266,6 +262,8 @@ function load_contain($post_type, $post_categorie = '', $format = '', $order = '
 /* Fonction de re-chargement via les select et le bouton 'charger plus'*/
 
 function load_more_photos($request){
+
+    $photos = [];//si aucune photo ne correspond au tri demandé
 
     $page = (int) ($request->get_param('paged') ?? 1);//en cas de pb page 1 forcée
     $categorie = $request->get_param('category') ?? '';
