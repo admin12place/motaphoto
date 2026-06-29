@@ -1,6 +1,5 @@
 /*script utilisés par les menus, la globale, le chargement de la gallery*/
 
-
 /*MODALE DE CONTACT*/
 const siteBody = document.querySelector('.customize-support');
 const contactModal = document.getElementById('contact-modal');
@@ -26,6 +25,11 @@ document.addEventListener('click', (e) => {
 closeContactButton.addEventListener('click', () => {
     contactModal.classList.add('hidden');
 })
+
+document.addEventListener('wpcf7mailsent', function(event) {
+    alert('Votre message a bien été envoyé');
+    contactModal.classList.add('hidden');
+}, false);
 
 /*PRÉ REMPLISSAGE DE LA REF. DE PHOTO SUR LA MODALE*/
 jQuery(function($) {
