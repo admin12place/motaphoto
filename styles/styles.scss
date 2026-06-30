@@ -74,6 +74,7 @@
 }
 
 #main.site-main {
+     min-height: 80vh;
     .wp-block-heading, .wp-block-paragraph {
         margin: 3vh clamp(10px, 9.2vw, 146px);
     }
