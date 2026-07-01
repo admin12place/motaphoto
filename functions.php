@@ -208,7 +208,8 @@ register_rest_route(
     '/load/',
     array(
         'methods'=>'GET',
-        'callback'=>'load_more_photos'
+        'callback'=>'load_more_photos',
+        'permission_callback' => '__return_true'
     )
 );
 
