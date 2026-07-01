@@ -101,7 +101,7 @@
         </div>
         
     </div>
-    <div class="like-photo-single">
+    <div id="gallery" class="like-photo-single">
         <h3>VOUS AIMEREZ AUSSI</h3>
         <?php
             $categories = get_the_terms(get_the_ID(), 'categorie');
@@ -115,7 +115,7 @@
             }
         ?>
 
-        <div id="related-photos"
+        <div id="related-photos" class="photos-thumbnail"
             data-photo-id="<?php echo get_the_ID(); ?>"
             data-categories="<?php echo implode(',', $category_ids); ?>">
         </div>

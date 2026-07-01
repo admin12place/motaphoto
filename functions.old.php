@@ -123,6 +123,14 @@ function mota_enqueue_script_lightbox() {//le js de la lightbox
         get_stylesheet_directory_uri() . '/js/script-lightbox.js',
         array(),
         filemtime(get_stylesheet_directory() . '/js/script-lightbox.js'), true);
+
+    /*wp_localize_script(
+            'script-lightbox',
+        'ajax_object',
+        array(
+            'ajax_url' => admin_url('admin-ajax.php')
+        )
+    );*/
 }
 add_action( 'wp_enqueue_scripts', 'mota_enqueue_script_lightbox' );
 
@@ -159,28 +167,28 @@ function load_related_photos() {
 
     if ($query->have_posts()) :
 
-        while ($query->have_posts()) : $query->the_post();
-            $image_id = SCF::get('photo_file');
-            $image_title = SCF::get('photo_title');
-            $image_url = wp_get_attachment_url($image_id, 'full');
-            $image_ref = SCF::get('photo_reference');
-        ?>
+        while ($query->have_posts()) :
+            $query->the_post();
 
-        <div class="single-link">
-			<img class="gallery" 
-				data-reference="<?php echo esc_attr($image_ref); ?>"
-				data-categorie="<?php echo esc_attr($image_cat); ?>"
-				data-title="<?php echo esc_attr($image_title); ?>" 
-				src="<?php echo esc_url($image_url); ?>" alt="<?php echo $image_title; ?>" title="<?php echo $image_title; ?>"/>
+            $photo_file_id = SCF::get('photo_file');
+            $image = wp_get_attachment_url($photo_file_id);
+            ?>
 
-			<a href="<?php the_permalink();?>">
-				<span class="dashicons dashicons-visibility" title="Voir les détails de <?php echo $image_title;?>"></span>
-			</a>
-			<span class="dashicons dashicons-fullscreen-alt" title="Plein écran"></span>	
-		</div>
+            <article class="related-photo">
+                <a href="<?php the_permalink(); ?>">
+                <span class="dashicons dashicons-visibility" title="Voir les détails de <?php echo the_title_attribute();?>"></span>
+                    <img
+                        src="<?php echo esc_url($image); ?>"
+                        alt="<?php the_title_attribute(); ?>"
+                    >
+                    <span class="dashicons dashicons-fullscreen-alt" title="Plein écran"></span>
+                </a>
+                
+            </article>
 
-		<?php
-			endwhile; 
+            <?php
+
+        endwhile;
 
     endif;
 

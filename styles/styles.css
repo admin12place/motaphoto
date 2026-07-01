@@ -302,32 +302,32 @@ nav.footer-navigation .footer-navigation-wrapper .menu-item > a:hover {
 }
 
 /*******************LA PAGE ACCUEIL***********************/
-#photos-catalogue {
+#photos-catalogue, .like-photo-single {
   display: flex;
   flex-direction: column;
   width: 76vw;
   max-width: 1148px;
   margin: 80px auto 40px;
 }
-#photos-catalogue .search-sort {
+#photos-catalogue .search-sort, .like-photo-single .search-sort {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
-#photos-catalogue .search-sort .search {
+#photos-catalogue .search-sort .search, .like-photo-single .search-sort .search {
   display: flex;
   flex-direction: row;
   width: 50%;
   justify-content: space-between;
   gap: 50px;
 }
-#photos-catalogue .search-sort .sort {
+#photos-catalogue .search-sort .sort, .like-photo-single .search-sort .sort {
   display: flex;
   flex-direction: row;
   width: 50%;
   justify-content: flex-end;
 }
-#photos-catalogue .photos-thumbnail {
+#photos-catalogue .photos-thumbnail, .like-photo-single .photos-thumbnail {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
@@ -337,18 +337,18 @@ nav.footer-navigation .footer-navigation-wrapper .menu-item > a:hover {
        column-gap: 1vw;
   row-gap: 1vw;
 }
-#photos-catalogue .photos-thumbnail .single-link {
+#photos-catalogue .photos-thumbnail .single-link, .like-photo-single .photos-thumbnail .single-link {
   position: relative;
   width: 49%;
   cursor: default;
 }
-#photos-catalogue .photos-thumbnail .single-link .gallery {
+#photos-catalogue .photos-thumbnail .single-link .gallery, .like-photo-single .photos-thumbnail .single-link .gallery {
   width: 100%;
   aspect-ratio: 1/1;
   -o-object-fit: cover;
      object-fit: cover;
 }
-#photos-catalogue .photos-thumbnail .single-link .dashicons-visibility {
+#photos-catalogue .photos-thumbnail .single-link .dashicons-visibility, .like-photo-single .photos-thumbnail .single-link .dashicons-visibility {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -361,35 +361,35 @@ nav.footer-navigation .footer-navigation-wrapper .menu-item > a:hover {
   transition: opacity 0.5s;
   cursor: pointer;
 }
-#photos-catalogue .photos-thumbnail .single-link:hover .dashicons-visibility, #photos-catalogue .photos-thumbnail .single-link:hover .dashicons-fullscreen-alt {
+#photos-catalogue .photos-thumbnail .single-link:hover .dashicons-visibility, #photos-catalogue .photos-thumbnail .single-link:hover .dashicons-fullscreen-alt, .like-photo-single .photos-thumbnail .single-link:hover .dashicons-visibility, .like-photo-single .photos-thumbnail .single-link:hover .dashicons-fullscreen-alt {
   opacity: 1;
 }
-#photos-catalogue .select-form {
+#photos-catalogue .select-form, .like-photo-single .select-form {
   display: flex;
   flex-direction: column;
 }
-#photos-catalogue .select-form label {
+#photos-catalogue .select-form label, .like-photo-single .select-form label {
   font-size: clamp(12px, 2vw, 16px);
 }
-#photos-catalogue .select-form select {
+#photos-catalogue .select-form select, .like-photo-single .select-form select {
   background-color: #ffffff;
   width: clamp(217px, 17.25vw, 260px);
   height: clamp(25px, 4.45vh, 43px);
 }
-#photos-catalogue .select-form select:hover {
+#photos-catalogue .select-form select:hover, .like-photo-single .select-form select:hover {
   cursor: pointer;
 }
-#photos-catalogue .button-more {
+#photos-catalogue .button-more, .like-photo-single .button-more {
   display: flex;
   align-items: center;
   justify-content: center;
   margin-top: 3vw;
 }
-#photos-catalogue .button-more .more-photos {
+#photos-catalogue .button-more .more-photos, .like-photo-single .button-more .more-photos {
   width: clamp(180px, 20vw, 272px);
   height: 50px;
 }
-#photos-catalogue .button-more .more-photos:hover {
+#photos-catalogue .button-more .more-photos:hover, .like-photo-single .button-more .more-photos:hover {
   cursor: pointer;
 }
 
