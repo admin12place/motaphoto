@@ -135,6 +135,22 @@ add_action('wp_enqueue_scripts', 'theme_enqueue_scripts');
 
 /*****************************/
 
+function get_photo_categories($post_id = null)
+{
+    $post_id = $post_id ?: get_the_ID();
+    $terms = get_the_terms($post_id, 'categorie');
+
+    if (empty($terms) || is_wp_error($terms)) { return ''; }
+
+    $image_cats = [];
+    foreach ($terms as $term) {
+        $image_cats[] = $term->name;
+    }
+    return implode(', ', $image_cats);
+}
+
+/*****************************/
+
 function load_related_photos() {
 
     $photo_id = intval($_POST['photo_id']);
@@ -164,6 +180,8 @@ function load_related_photos() {
             $image_title = SCF::get('photo_title');
             $image_url = wp_get_attachment_url($image_id, 'full');
             $image_ref = SCF::get('photo_reference');
+
+            $image_cat = get_photo_categories();//renvoie la ou les catégories
         ?>
 
         <div class="single-link">
@@ -285,22 +303,9 @@ function load_more_photos($request){
 
         while ($query->have_posts()) {
             $query->the_post();
-
             $image_id = SCF::get('photo_file', get_the_ID());
             $image_ref = SCF::get('photo_reference');
-            
-            $cat = get_the_terms(get_the_ID(), 'categorie');
-            
-            $image_cat = '';
-		    
-		    if ($cat && !is_wp_error($cat)) {
-                $image_cats = [];
-    		    foreach ($cat as $cat_index) {
-        		    $image_cats[] = $cat_index->name;
-    		    }
-			    $image_cat = implode(', ', $image_cats);
-		    }
-            
+            $image_cat = get_photo_categories();//renvoie la ou les catégories
             $image_url = wp_get_attachment_image_url($image_id, 'full');
 
             $photos[] = [

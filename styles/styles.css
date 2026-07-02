@@ -668,6 +668,13 @@ nav.footer-navigation .footer-navigation-wrapper .menu-item > a:hover {
   transition: opacity 0.4s ease;
 }
 
+#lightbox-container.no-nav .left-arrow,
+#lightbox-container.no-nav .right-arrow {
+  pointer-events: none;
+  opacity: 0.3;
+  cursor: default;
+}
+
 /*********************MEDIA QUERIES***********************/
 @media (max-width: 958px) {
   #photos-catalogue {

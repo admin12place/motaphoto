@@ -705,6 +705,12 @@ nav.footer-navigation {//menu secondaire
         }
     }
 }
+#lightbox-container.no-nav .left-arrow,
+#lightbox-container.no-nav .right-arrow {
+    pointer-events: none;
+    opacity: 0.3;
+    cursor: default;
+}
 
 /*********************MEDIA QUERIES***********************/
 

@@ -34,15 +34,8 @@
     $photo_year =   mb_strtoupper (esc_html(SCF::get('photo_year')), 'UTF-8');
     $photo_type =  mb_strtoupper (esc_html(SCF::get('photo_type')), 'UTF-8');
     $photo_format =  mb_strtoupper (esc_html(SCF::get('photo_format')), 'UTF-8');
+    $photo_categorie = mb_strtoupper (get_photo_categories());
 
-    $photo_categorie = [];
-        $cats = get_the_terms(get_the_ID(), 'categorie');
-        $photo_categorie = mb_strtoupper('néant');
-        if ($cats && !is_wp_error($cats)) {
-            $photo_categorie = [];
-            foreach ($cats as $cat) { $photo_categorie[] = $cat->name; }
-        $photo_categorie =  mb_strtoupper (implode (', ', $photo_categorie), 'UTF-8');
-        }
 ?>
 
 <script>
@@ -51,6 +44,7 @@
     const photoFiles = <?php echo json_encode($photoFiles); ?>;//Tableau des chemins vers les fichiers
     const thisPhotoSlug = "<?= get_post_field('post_name', get_the_ID()); ?>";//Slug de l'image actuelle
     const thisPhotoRef = "<?= esc_js($photo_reference); ?>";//reference de la photo actuelle pour jQuery et la modale
+    const thisPhotoCat = "<?= esc_js($photo_categorie); ?>";//catégorie de la photo actuelle pour jQuery et la modale
 </script>
 
 <!--STRUCTURE HTML DE LA PAGE SINGLE-->
@@ -73,7 +67,9 @@
 
         <div class="img-photo-single">
             <img class="main-image" src="<?php echo esc_url($photo_file_url);?>"
-				data-title="<?php echo mb_strtolower($photo_title); ?>" />
+				data-title="<?php echo mb_strtolower($photo_title); ?>"
+                data-reference="<?php echo mb_strtolower($photo_reference); ?>"
+                data-categorie="<?php echo mb_strtolower($photo_categorie); ?>"/>
             <span class="dashicons dashicons-fullscreen-alt" title="Plein écran"></span>
         </div>
 

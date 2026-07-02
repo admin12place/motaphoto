@@ -1,7 +1,7 @@
 
 const lightboxMota = document.getElementById('lightbox-container');//la lightbox
 const closeLightboxButton = document.querySelector('.lightbox-no');//icon de fermeture de la lightbox
-const gallery = document.getElementById('gallery');//la galerie de la page d'accueil ou l'image principale de la page single
+const gallery = document.getElementById('gallery');//la galerie de la page d'accueil ou des related images
 const lightboxPhoto = document.querySelector('.image-container');//la <div> de l'image de la lightbox
 
 const rightArrow = document.querySelector('.right-arrow');//fleche de droite (avec le texte)
@@ -50,15 +50,13 @@ if (gallery) {
         
         lightboxMota.classList.remove('no-displayed');
         document.body.style.overflow = 'hidden';
-
-        
-       
     })
 }
 
 //Fermeture de la lightbox
 closeLightboxButton.addEventListener('click', () => {
     lightboxMota.classList.add('no-displayed');
+    lightboxMota.classList.remove('no-nav');
     document.body.style.overflow = '';
 });
 
@@ -81,23 +79,24 @@ leftArrow.addEventListener('click', () => {
     displaySelectedPhoto (currentIndex)
 })
 
-//Lightbox sur la page single
+//Lightbox sur la main-image de la page single
 
 const singleMainImage = document.querySelector('.main-image');
-const fullScreen = document.querySelector('.dashicons-fullscreen-alt');
+let openedFromMainImage = false;
 
 if (singleMainImage) {
-    selectedPhotos = [singleMainImage];
-    console.log(selectedPhotos)
+    const lightboxContainer = document.getElementById('content-container')
+    const fullScreen = singleMainImage.closest('.img-photo-single').querySelector('.dashicons-fullscreen-alt');
 
     fullScreen.addEventListener('click', () => {
+        selectedPhotos = [singleMainImage];
         currentIndex = 0;
+        openedFromMainImage = true;
+
         displaySelectedPhoto(currentIndex);
+
+        lightboxMota.classList.add('no-nav');
         lightboxMota.classList.remove('no-displayed');
         document.body.style.overflow = 'hidden';
-        document.querySelectorAll('.left-arrow, .right-arrow, .image-ref, .image-cat')
-            .forEach(element => {
-                element.style.display = 'none';
-            });
     });
-}
+};
