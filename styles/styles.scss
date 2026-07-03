@@ -286,7 +286,7 @@ nav.footer-navigation {//menu secondaire
     .close-button {
         display: none;
     }
-    #wpcf7-f27-o1 {
+    .wpcf7 {
         width: 100%;
         .wpcf7-form {
             display: flex;
@@ -566,10 +566,10 @@ nav.footer-navigation {//menu secondaire
                 .prec-suiv-thumbnail {
                     position: absolute;
                     width: 86px;
-                    height: 73px;
+                    height: 75px;
                     background-size: cover;
                     background-position: center;
-                    bottom: 26px;
+                    bottom: 24px;
                     right: 0px;
                     border: 1px solid $black-black;
                     opacity: 0;

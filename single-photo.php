@@ -14,6 +14,7 @@
 
     $slugs = [];//tableau des slugs
     $photoFiles = [];//tableau des fichiers images
+    $photoUrls = [];
 
     foreach ($photos as $photo) {
         $slugs[] = $photo->post_name;
@@ -27,7 +28,6 @@
 
     while ( have_posts() ) : the_post() ;
 
-    $photo_file = mb_strtoupper ('Fichier : ' . esc_html(SCF::get('photo_file')), 'UTF-8');
     $photo_file_url = wp_get_attachment_url(SCF::get('photo_file'));
     $photo_title = mb_strtoupper (esc_html(SCF::get('photo_title')), 'UTF-8');
     $photo_reference =  mb_strtoupper (esc_html(SCF::get('photo_reference')), 'UTF-8');
@@ -54,7 +54,7 @@
 
         <div class="left-contain">
 
-            <div class="desc-photo-single <?php echo $class_format; ?>">
+            <div class="desc-photo-single">
                 <h2 class="desc-photo-title"><?php echo $photo_title; ?></h2>
                 <span class="desc-item-photo"><?php echo "RÉFÉRENCE : " . $photo_reference; ?></span>
                 <span class="desc-item-photo"><?php echo "CATÉGORIES : " . $photo_categorie; ?></span>
@@ -120,6 +120,7 @@
 </article>
 
 <?php
+
 endwhile;
 
 get_footer();

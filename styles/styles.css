@@ -255,10 +255,10 @@ nav.footer-navigation .footer-navigation-wrapper .menu-item > a:hover {
 #contact-modal .close-button {
   display: none;
 }
-#contact-modal #wpcf7-f27-o1 {
+#contact-modal .wpcf7 {
   width: 100%;
 }
-#contact-modal #wpcf7-f27-o1 .wpcf7-form {
+#contact-modal .wpcf7 .wpcf7-form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -266,29 +266,29 @@ nav.footer-navigation .footer-navigation-wrapper .menu-item > a:hover {
   gap: 15px;
   width: 263px;
 }
-#contact-modal #wpcf7-f27-o1 .wpcf7-form label {
+#contact-modal .wpcf7 .wpcf7-form label {
   font-family: "Poppins", sans-serif;
   font-size: 12px;
   font-style: medium;
   font-weight: 500;
 }
-#contact-modal #wpcf7-f27-o1 .wpcf7-form input, #contact-modal #wpcf7-f27-o1 .wpcf7-form textarea {
+#contact-modal .wpcf7 .wpcf7-form input, #contact-modal .wpcf7 .wpcf7-form textarea {
   border: 1px solid #000000;
   border-radius: 10px;
   width: 100%;
   height: 40px;
 }
-#contact-modal #wpcf7-f27-o1 .wpcf7-form textarea {
+#contact-modal .wpcf7 .wpcf7-form textarea {
   height: 210px;
 }
-#contact-modal #wpcf7-f27-o1 .wpcf7-form input[type=submit] {
+#contact-modal .wpcf7 .wpcf7-form input[type=submit] {
   width: 263px;
   height: 50px;
   padding: 16px 0;
   background-color: #d8d8d8;
   color: #000000;
 }
-#contact-modal #wpcf7-f27-o1 .wpcf7-form input[type=submit]:hover {
+#contact-modal .wpcf7 .wpcf7-form input[type=submit]:hover {
   cursor: pointer;
 }
 #contact-modal form .wpcf7-response-output {
@@ -533,10 +533,10 @@ nav.footer-navigation .footer-navigation-wrapper .menu-item > a:hover {
 #main-single .link-slider-single .right-block-slider .slider-arrows .prec-suiv-thumbnail {
   position: absolute;
   width: 86px;
-  height: 73px;
+  height: 75px;
   background-size: cover;
   background-position: center;
-  bottom: 26px;
+  bottom: 24px;
   right: 0px;
   border: 1px solid #000000;
   opacity: 0;

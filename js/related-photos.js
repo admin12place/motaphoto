@@ -20,6 +20,7 @@ jQuery(document).ready(function ($) {
         },
         success: function (response) {
             container.html(response);
+            //console.log(response);
         }
     });
 
