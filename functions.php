@@ -130,6 +130,27 @@ function get_photo_categories($post_id = null)
 
 /*****************************/
 
+function get_photo_data() {
+
+    $post_id = intval($_POST['post_id']);
+
+    if (!$post_id) {
+        wp_send_json_error('ID invalide');
+    }
+
+    $image_id = SCF::get('photo_file', $post_id);
+
+    wp_send_json_success([
+        'image' => wp_get_attachment_image_url($image_id, 'medium'),
+        'link'  => get_permalink($post_id),
+        'slug'  => get_post_field('post_name', $post_id),
+    ]);
+}
+add_action('wp_ajax_get_photo_data', 'get_photo_data');
+add_action('wp_ajax_nopriv_get_photo_data', 'get_photo_data');
+
+/*****************************/
+
 function load_related_photos() {
 
     $photo_id = intval($_POST['photo_id']);

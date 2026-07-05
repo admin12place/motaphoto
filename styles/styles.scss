@@ -489,8 +489,7 @@ nav.footer-navigation {//menu secondaire
         display: flex;
         flex-direction: row;
         gap: 21px;
-        height: 12vh;
-        max-height: 12vh;
+        height: clamp(130px, 12vh, 180px);
         border-bottom: 2px solid $black-black;
         .left-block-slider {
             display: flex;
@@ -544,6 +543,7 @@ nav.footer-navigation {//menu secondaire
                 display: flex;
                 flex-direction: row;
                 position: relative;
+                justify-content: center;
                 gap: 30px;
                 margin-left: auto;
                 .arrow-left {
@@ -565,11 +565,11 @@ nav.footer-navigation {//menu secondaire
                 }
                 .prec-suiv-thumbnail {
                     position: absolute;
-                    width: 86px;
-                    height: 75px;
+                    width: 81px;
+                    height: 71px;
                     background-size: cover;
                     background-position: center;
-                    bottom: 24px;
+                    bottom: 32px;
                     right: 0px;
                     border: 1px solid $black-black;
                     opacity: 0;

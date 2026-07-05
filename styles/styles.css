@@ -456,8 +456,7 @@ nav.footer-navigation .footer-navigation-wrapper .menu-item > a:hover {
   display: flex;
   flex-direction: row;
   gap: 21px;
-  height: 12vh;
-  max-height: 12vh;
+  height: clamp(130px, 12vh, 180px);
   border-bottom: 2px solid #000000;
 }
 #main-single .link-slider-single .left-block-slider {
@@ -512,6 +511,7 @@ nav.footer-navigation .footer-navigation-wrapper .menu-item > a:hover {
   display: flex;
   flex-direction: row;
   position: relative;
+  justify-content: center;
   gap: 30px;
   margin-left: auto;
 }
@@ -532,11 +532,11 @@ nav.footer-navigation .footer-navigation-wrapper .menu-item > a:hover {
 }
 #main-single .link-slider-single .right-block-slider .slider-arrows .prec-suiv-thumbnail {
   position: absolute;
-  width: 86px;
-  height: 75px;
+  width: 81px;
+  height: 71px;
   background-size: cover;
   background-position: center;
-  bottom: 24px;
+  bottom: 32px;
   right: 0px;
   border: 1px solid #000000;
   opacity: 0;
