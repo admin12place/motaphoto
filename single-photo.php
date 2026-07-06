@@ -3,7 +3,7 @@
     get_header();
 
     while ( have_posts() ) : the_post() ;
-    //on récupère l'ID de l'image en cours
+    //on récupère l'ID et le slug de l'image en cours
     $current_id = get_the_ID();
     $current_slug = get_post_field('post_name', get_the_ID());
 

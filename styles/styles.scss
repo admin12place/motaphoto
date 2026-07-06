@@ -823,10 +823,15 @@ nav.footer-navigation {//menu secondaire
     }
     #contact-modal {
         width: 98%;
-        top: 050%;
-        height: 99vh;
+        bottom: 0;
+        height: 90vh;
         .modal-header {
             margin: 36px 0 18px 0;
+        }
+        .wpcf7 {
+            .wpcf7-form {
+                gap: 5px;
+            }
         }
         .close-button {
             display: block;
