@@ -72,7 +72,7 @@ function mota_enqueue_related_photos() { //le js des photos connexes
         filemtime(get_stylesheet_directory() . '/js/related-photos.js'), true);
 
     wp_localize_script(
-            'related-photos',
+        'related-photos',
         'ajax_object',
         array(
             'ajax_url' => admin_url('admin-ajax.php')
@@ -157,6 +157,7 @@ function load_related_photos() {
     $categories = array_map('intval', explode(',', $_POST['categories']));
     $args = array(
         'post_type'      => 'photo',
+        'post_status'    => 'publish',
         'posts_per_page' => 2,
         'orderby'        => 'rand',
         'post__not_in'   => array($photo_id),
@@ -235,13 +236,14 @@ function load_contain($post_type, $post_categorie = '', $format = '', $order = '
                         $post_number = 8, $page = 1) {
 
     $args = array(
-    'post_type'      => $post_type,
-    'posts_per_page' => $post_number,
-    'paged'          => $page,
-    'meta_key'       => 'photo_year', //tri avec le champs de SCF et pas la date WP
-    'orderby'        => array(
-        'meta_value_num' => $order, //pour traiter la valeur comme un nombre (pas une chaine)
-        'ID'             => $order, //tri aussi par id pour éviter doublons.
+        'post_type'      => $post_type,
+        'post_status'    => 'publish',
+        'posts_per_page' => $post_number,
+        'paged'          => $page,
+        'meta_key'       => 'photo_year', //tri avec le champs de SCF et pas la date WP
+        'orderby'        => array(
+            'meta_value_num' => $order, //pour traiter la valeur comme un nombre (pas une chaine)
+            'ID'             => $order, //tri aussi par id pour éviter doublons.
     ),
 );
 

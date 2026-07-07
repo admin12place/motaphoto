@@ -3,9 +3,8 @@
     get_header();
 
     while ( have_posts() ) : the_post() ;
-    //on récupère l'ID et le slug de l'image en cours
+    //on récupère l'ID de l'image en cours
     $current_id = get_the_ID();
-    $current_slug = get_post_field('post_name', get_the_ID());
 
     //Celui de l'image précédente dans la galerie
     $previous_id = $wpdb->get_var(
@@ -146,48 +145,3 @@
 endwhile;
 
 get_footer();
-
-/* //Récupèration des slugs de toutes les photos dans un tableau
-$photos = get_posts([
-'post_type'      => 'photo',
-'posts_per_page' => -1,
-'post_status'    => 'publish',
-'meta_key'       => 'photo_year',
-'orderby'        => 'meta_value_num',
-'order'          => 'DESC'
-]);
-
-$slugs = [];//tableau des slugs
-$photoFiles = [];//tableau des fichiers images
-$photoUrls = [];
-
-foreach ($photos as $photo) {
-    $slugs[] = $photo->post_name;
-    $photoUrls[] = get_permalink($photo->ID);
-    $photoImage = (int) SCF::get('photo_file', $photo->ID);
-    $photoFiles[] = wp_get_attachment_image_url($photoImage, 'medium');
-}
-?>
-
-<?php
-
-while ( have_posts() ) : the_post() ;
-
-$photo_file_url = wp_get_attachment_url(SCF::get('photo_file'));
-$photo_title = mb_strtoupper (esc_html(SCF::get('photo_title')), 'UTF-8');
-$photo_reference =  mb_strtoupper (esc_html(SCF::get('photo_reference')), 'UTF-8');
-$photo_year =   mb_strtoupper (esc_html(SCF::get('photo_year')), 'UTF-8');
-$photo_type =  mb_strtoupper (esc_html(SCF::get('photo_type')), 'UTF-8');
-$photo_format =  mb_strtoupper (esc_html(SCF::get('photo_format')), 'UTF-8');
-$photo_categorie = mb_strtoupper (get_photo_categories());
-
-?>
-
-<script>
-const photoSlugs = <?php echo json_encode($slugs); ?>;//Tableau des slug de toutes les photos
-const photoUrls = <?php echo json_encode($photoUrls); ?>;//Tableau des url de toutes les photos
-const photoFiles = <?php echo json_encode($photoFiles); ?>;//Tableau des chemins vers les fichiers
-const thisPhotoSlug = "<?= get_post_field('post_name', get_the_ID()); ?>";//Slug de l'image actuelle
-const thisPhotoRef = "<?= esc_js($photo_reference); ?>";//reference de la photo actuelle pour jQuery et la modale
-const thisPhotoCat = "<?= esc_js($photo_categorie); ?>";//catégorie de la photo actuelle pour jQuery et la modale
-</script>*/
