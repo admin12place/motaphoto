@@ -126,10 +126,6 @@
 	<div class="button-more">
 		<button class="more-photos">Charger plus</button>
 	</div>
-
-	<script>
-    	const apiUrl = "<?php echo get_rest_url(null,'photos/v1/load'); ?>";
-	</script>
 	
 </section>
 

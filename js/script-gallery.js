@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
             sort:       sortSearchState.sort
         });
 
-        fetch(apiUrl + '?' + newSortParams)
+        fetch(galleryData.apiUrl + '?' + newSortParams)
         .then(responsePagination => responsePagination.json())
         .then(data => {
 
@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const newSortParams =  new URLSearchParams(sortSearchState);
 
-        fetch(apiUrl + '?' + newSortParams)
+        fetch(galleryData.apiUrl + '?' + newSortParams)
             .then(responseFilters => responseFilters.json())
             .then(data => {
                 if(reset === true){
