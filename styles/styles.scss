@@ -821,6 +821,28 @@ nav.footer-navigation {//menu secondaire
             }
         } 
     }
+    #main-single {
+        .link-slider-single {
+            .right-block-slider {
+                .slider-arrows {
+                    width: 83px;
+                    height: 16px;
+                    justify-content: space-between;
+                    gap: 0;
+                    .arrow-left, .arrow-right {
+                        width: 30px;
+                    }
+                    .prec-suiv-thumbnail {
+                        bottom: 36px;
+                    }
+                }
+            }
+            .left-block-slider {
+                justify-content: center;
+                gap: 0;
+            }
+        }
+    }
     #contact-modal {
         width: 98%;
         bottom: 0;

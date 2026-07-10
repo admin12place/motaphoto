@@ -766,6 +766,22 @@ nav.footer-navigation .footer-navigation-wrapper .menu-item > a:hover {
     width: 100%;
     min-width: 225px;
   }
+  #main-single .link-slider-single .right-block-slider .slider-arrows {
+    width: 83px;
+    height: 16px;
+    justify-content: space-between;
+    gap: 0;
+  }
+  #main-single .link-slider-single .right-block-slider .slider-arrows .arrow-left, #main-single .link-slider-single .right-block-slider .slider-arrows .arrow-right {
+    width: 30px;
+  }
+  #main-single .link-slider-single .right-block-slider .slider-arrows .prec-suiv-thumbnail {
+    bottom: 36px;
+  }
+  #main-single .link-slider-single .left-block-slider {
+    justify-content: center;
+    gap: 0;
+  }
   #contact-modal {
     width: 98%;
     bottom: 0;
