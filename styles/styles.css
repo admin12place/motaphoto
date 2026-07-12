@@ -784,14 +784,18 @@ nav.footer-navigation .footer-navigation-wrapper .menu-item > a:hover {
   }
   #contact-modal {
     width: 98%;
+    position: absolute;
     bottom: 0;
-    height: 90vh;
+    height: 100%;
   }
   #contact-modal .modal-header {
     margin: 36px 0 18px 0;
   }
   #contact-modal .wpcf7 .wpcf7-form {
     gap: 5px;
+  }
+  #contact-modal .wpcf7 .wpcf7-form textarea {
+    height: 20vh;
   }
   #contact-modal .close-button {
     display: block;

@@ -845,14 +845,18 @@ nav.footer-navigation {//menu secondaire
     }
     #contact-modal {
         width: 98%;
+        position: absolute;
         bottom: 0;
-        height: 90vh;
+        height: 100%;
         .modal-header {
             margin: 36px 0 18px 0;
         }
         .wpcf7 {
             .wpcf7-form {
                 gap: 5px;
+                textarea {
+                    height: 20vh;
+                }
             }
         }
         .close-button {
