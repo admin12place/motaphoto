@@ -347,6 +347,10 @@ nav.footer-navigation .footer-navigation-wrapper .menu-item > a:hover {
   aspect-ratio: 1/1;
   -o-object-fit: cover;
      object-fit: cover;
+  transition: filter 0.3s ease;
+}
+#photos-catalogue .photos-thumbnail .single-link:hover .gallery, .like-photo-single .photos-thumbnail .single-link:hover .gallery {
+  filter: brightness(80%);
 }
 #photos-catalogue .photos-thumbnail .single-link .dashicons-visibility, .like-photo-single .photos-thumbnail .single-link .dashicons-visibility {
   position: absolute;
@@ -361,8 +365,25 @@ nav.footer-navigation .footer-navigation-wrapper .menu-item > a:hover {
   transition: opacity 0.5s;
   cursor: pointer;
 }
-#photos-catalogue .photos-thumbnail .single-link:hover .dashicons-visibility, #photos-catalogue .photos-thumbnail .single-link:hover .dashicons-fullscreen-alt, .like-photo-single .photos-thumbnail .single-link:hover .dashicons-visibility, .like-photo-single .photos-thumbnail .single-link:hover .dashicons-fullscreen-alt {
+#photos-catalogue .photos-thumbnail .single-link .on-hover-categorie, #photos-catalogue .photos-thumbnail .single-link .on-hover-title, .like-photo-single .photos-thumbnail .single-link .on-hover-categorie, .like-photo-single .photos-thumbnail .single-link .on-hover-title {
+  position: absolute;
+  top: 94%;
+  font-size: clamp(12px, 2vw, 16px);
+  color: #ffffff;
+  opacity: 0;
+  visibility: 0;
+  transition: opacity 0.5s;
+}
+#photos-catalogue .photos-thumbnail .single-link:hover .dashicons-visibility, #photos-catalogue .photos-thumbnail .single-link:hover .dashicons-fullscreen-alt,
+#photos-catalogue .photos-thumbnail .single-link:hover .on-hover-title, #photos-catalogue .photos-thumbnail .single-link:hover .on-hover-categorie, .like-photo-single .photos-thumbnail .single-link:hover .dashicons-visibility, .like-photo-single .photos-thumbnail .single-link:hover .dashicons-fullscreen-alt,
+.like-photo-single .photos-thumbnail .single-link:hover .on-hover-title, .like-photo-single .photos-thumbnail .single-link:hover .on-hover-categorie {
   opacity: 1;
+}
+#photos-catalogue .photos-thumbnail .single-link .on-hover-title, .like-photo-single .photos-thumbnail .single-link .on-hover-title {
+  left: 8px;
+}
+#photos-catalogue .photos-thumbnail .single-link .on-hover-categorie, .like-photo-single .photos-thumbnail .single-link .on-hover-categorie {
+  right: 8px;
 }
 #photos-catalogue .select-form, .like-photo-single .select-form {
   display: flex;

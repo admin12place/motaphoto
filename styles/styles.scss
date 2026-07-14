@@ -378,6 +378,10 @@ nav.footer-navigation {//menu secondaire
                 width: 100%;
                 aspect-ratio: 1 / 1;
                 object-fit: cover;
+                transition: filter 0.3s ease;
+            }
+            &:hover .gallery {
+                filter: brightness(80%);
             }
         }
         .single-link .dashicons-visibility {
@@ -393,10 +397,26 @@ nav.footer-navigation {//menu secondaire
             transition: opacity .5s;
             cursor: pointer;
         }
-        .single-link:hover .dashicons-visibility,  .single-link:hover .dashicons-fullscreen-alt {
-            opacity: 1;
+        .single-link .on-hover-categorie, .single-link .on-hover-title {
+            position: absolute;
+            top: 94%;
+            font-size: clamp(12px, 2vw, 16px);
+            color: $white-white;
+            opacity: 0;
+            visibility: 0;
+            transition: opacity .5s;
         }
 
+        .single-link:hover .dashicons-visibility,  .single-link:hover .dashicons-fullscreen-alt,
+        .single-link:hover .on-hover-title, .single-link:hover .on-hover-categorie {
+            opacity: 1;
+        }
+        .single-link .on-hover-title {
+            left: 8px;
+        }
+        .single-link .on-hover-categorie {
+            right: 8px;
+        }
     }
     .select-form {
         display: flex;

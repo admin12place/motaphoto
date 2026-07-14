@@ -111,7 +111,9 @@
 			<a href="<?php the_permalink();?>">
 				<span class="dashicons dashicons-visibility" title="Voir les détails de <?php echo $image_title;?>" data-id="<?php echo get_the_ID(); ?>"></span>
 			</a>
-			<span class="dashicons dashicons-fullscreen-alt" title="Plein écran"></span>	
+			<span class="dashicons dashicons-fullscreen-alt" title="Plein écran"></span>
+			<span class="on-hover-title"><?php echo $image_title; ?></span>
+            <span class="on-hover-categorie"><?php echo $image_cat; ?></span>	
 		</div>
 
 		<?php
