@@ -42,7 +42,7 @@
 		<div class="search">
 			<div class="select-form">
 				<label for="categories-search">CATÉGORIES</label>
-				<select id="categories-search" name="categories-search">
+				<select id="categories-search" class="gallery-select" name="categories-search">
 					<option value="">Toutes les catégories</option>
 					<?php
 						foreach ($categories as $category) : 
@@ -56,7 +56,7 @@
 
 			<div class="select-form">
 				<label for="formats-search">FORMATS</label>
-				<select id="formats-search" name="formats-search">
+				<select id="formats-search" class="gallery-select" name="formats-search">
 					<option value="">Tous les formats</option>
 					<?php
 						foreach ($formats as $format) : 
@@ -72,7 +72,7 @@
 		<div class="sort">
 			<div class="select-form">
 				<label for="sort-photos">TRIER PAR</label>
-				<select id="sort-photos" name="sort-photos">
+				<select class="gallery-select" id="sort-photos" name="sort-photos">
 					<option value="DESC">À partir des plus récentes</option>
 					<option value="ASC">À partir des plus anciennes</option>
 				</select>

@@ -317,15 +317,24 @@ nav.footer-navigation .footer-navigation-wrapper .menu-item > a:hover {
 #photos-catalogue .search-sort .search, .like-photo-single .search-sort .search {
   display: flex;
   flex-direction: row;
-  width: 50%;
+  width: 49%;
   justify-content: space-between;
-  gap: 50px;
+  gap: 2vw;
 }
 #photos-catalogue .search-sort .sort, .like-photo-single .search-sort .sort {
   display: flex;
   flex-direction: row;
-  width: 50%;
+  min-width: 49%;
   justify-content: flex-end;
+}
+#photos-catalogue .search-sort .sort .select-form, .like-photo-single .search-sort .sort .select-form {
+  width: clamp(265px, 60%, 280px);
+}
+#photos-catalogue .search-sort .sort .select-form .select2, .like-photo-single .search-sort .sort .select-form .select2 {
+  width: auto;
+}
+#photos-catalogue .search-sort .sort .select-form .select2 .selection, .like-photo-single .search-sort .sort .select-form .select2 .selection {
+  width: auto;
 }
 #photos-catalogue .photos-thumbnail, .like-photo-single .photos-thumbnail {
   display: flex;
@@ -367,7 +376,7 @@ nav.footer-navigation .footer-navigation-wrapper .menu-item > a:hover {
 }
 #photos-catalogue .photos-thumbnail .single-link .on-hover-categorie, #photos-catalogue .photos-thumbnail .single-link .on-hover-title, .like-photo-single .photos-thumbnail .single-link .on-hover-categorie, .like-photo-single .photos-thumbnail .single-link .on-hover-title {
   position: absolute;
-  top: 94%;
+  top: 90%;
   font-size: clamp(12px, 2vw, 16px);
   color: #ffffff;
   opacity: 0;
@@ -389,16 +398,16 @@ nav.footer-navigation .footer-navigation-wrapper .menu-item > a:hover {
   display: flex;
   flex-direction: column;
 }
+#photos-catalogue .select-form .select2-selection, .like-photo-single .select-form .select2-selection {
+  background-color: #ffffff;
+  min-width: 217px;
+  height: clamp(25px, 3vh, 43px);
+}
+#photos-catalogue .select-form .select2-selection:hover, .like-photo-single .select-form .select2-selection:hover {
+  cursor: pointer;
+}
 #photos-catalogue .select-form label, .like-photo-single .select-form label {
   font-size: clamp(12px, 2vw, 16px);
-}
-#photos-catalogue .select-form select, .like-photo-single .select-form select {
-  background-color: #ffffff;
-  width: clamp(217px, 17.25vw, 260px);
-  height: clamp(25px, 4.45vh, 43px);
-}
-#photos-catalogue .select-form select:hover, .like-photo-single .select-form select:hover {
-  cursor: pointer;
 }
 #photos-catalogue .button-more, .like-photo-single .button-more {
   display: flex;
@@ -412,6 +421,31 @@ nav.footer-navigation .footer-navigation-wrapper .menu-item > a:hover {
 }
 #photos-catalogue .button-more .more-photos:hover, .like-photo-single .button-more .more-photos:hover {
   cursor: pointer;
+}
+
+.select2-container--default .select2-selection--single,
+.select2-container--default .select2-results__option {
+  font-family: "Space Mono", monospace;
+}
+
+.select2-container--default .select2-results__option--highlighted.select2-results__option--selectable {
+  background-color: #e00000 !important;
+  color: #000000;
+}
+
+.select2-container--default .select2-results__option--selectable:active {
+  background-color: #fe5858 !important;
+  color: #000000;
+}
+
+.select2-container--default .select2-results__option--highlighted.select2-results__option--selected {
+  background-color: #e00000 !important;
+  color: #ffffff;
+}
+
+.select2-container--default .select2-results__option--selected {
+  background-color: #ffd6d6 !important;
+  color: #000000;
 }
 
 /********************LA PAGE SINGLE***********************/
@@ -772,6 +806,7 @@ nav.footer-navigation .footer-navigation-wrapper .menu-item > a:hover {
   }
   #photos-catalogue .search-sort .search {
     align-items: center;
+    width: 265px;
   }
   #photos-catalogue .search-sort .sort {
     flex-direction: column;

@@ -18,6 +18,25 @@ add_action( 'wp_enqueue_scripts', 'wpm_enqueue_styles' );
 /***************************/
 
 
+function mota_enqueue_select2() {
+    wp_enqueue_style(
+        'select2-css',
+        'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css'
+    );
+
+    wp_enqueue_script(
+        'select2-js',
+        'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js',
+        ['jquery'],
+        null,
+        true
+    );
+}
+add_action('wp_enqueue_scripts', 'mota_enqueue_select2');
+
+/***************************/
+
+
 function load_dashicons_frontend() {//chargement des dashicons
     wp_enqueue_style('dashicons');
 }

@@ -1,5 +1,15 @@
 /*ÉVÉNEMENTS SUR LA GALERIE, PAGINATION ET CONTRÔLES DE TRI ET FILTRES*/
 
+//remplacement des select natifs par select2
+jQuery(function ($) {
+
+    $('.gallery-select').select2({
+        minimumResultsForSearch: Infinity, // masque la barre de recherche
+        width: '100%'
+    });
+
+});
+
 //Gestion du bouton de fin de galerie
 function endMorePhotosButton (paged, maxPages, button) {
     if (paged >= maxPages) {
@@ -39,6 +49,8 @@ document.addEventListener('DOMContentLoaded', () => {
             <span class="dashicons dashicons-visibility" title="Voir les détails de ${photo.title}"></span>
         </a>
         <span class="dashicons dashicons-fullscreen-alt" title="Plein écran"></span>
+        <span class="on-hover-title">${photo.title}</span>
+        <span class="on-hover-categorie">${photo.categorie}</span>
     </div>`;
   
     //Fin de l'événement si un de ces elements n'existe pas
@@ -77,26 +89,26 @@ document.addEventListener('DOMContentLoaded', () => {
     /*TRI ET FILTRES*/
 
     //événements sur chaque constante
-    categorieSelect.addEventListener('change', (e) => {
-        sortSearchState.category = e.target.value;
+    jQuery('#categories-search').on('change', function () {
+        sortSearchState.category = this.value;
         sortSearchState.paged = 1;
 
         load_sorted_photos(true);
     })
 
-    formatSelect.addEventListener('change', (e) => {
-        sortSearchState.format = e.target.value;
+    jQuery('#formats-search').on('change', function () {
+        sortSearchState.format = this.value;
         sortSearchState.paged = 1;
 
         load_sorted_photos(true);
     })
 
-    sortSelect.addEventListener('change', (e) => {
-        sortSearchState.sort = e.target.value;
+    jQuery('#sort-photos').on('change', function () {
+        sortSearchState.sort = this.value;
         sortSearchState.paged = 1;
-
+        
         load_sorted_photos(true);
-    })
+    });
 
     //Fonction d'affichage des photos triées
 

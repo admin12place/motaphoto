@@ -351,17 +351,27 @@ nav.footer-navigation {//menu secondaire
         .search {
             display: flex;
             flex-direction: row;
-            width: 50%;
+            width: 49%;
             justify-content: space-between;
-            gap: 50px;
+            gap: 2vw;
         }
         .sort {
             display: flex;
             flex-direction: row;
-            width: 50%;
+            min-width: 49%;
             justify-content: flex-end;
+            .select-form {
+                width: clamp(265px, 60%, 280px);
+                .select2 {
+                    width: auto;
+                    .selection {
+                        width: auto;
+                    }
+                }
+            }
         }
     }
+    
     .photos-thumbnail {
         display: flex;
         flex-wrap: wrap;
@@ -399,7 +409,7 @@ nav.footer-navigation {//menu secondaire
         }
         .single-link .on-hover-categorie, .single-link .on-hover-title {
             position: absolute;
-            top: 94%;
+            top: 90%;
             font-size: clamp(12px, 2vw, 16px);
             color: $white-white;
             opacity: 0;
@@ -421,18 +431,19 @@ nav.footer-navigation {//menu secondaire
     .select-form {
         display: flex;
         flex-direction: column;
-        label {
-            font-size: clamp(12px, 2vw, 16px);
-        }
-        select {
+        .select2-selection {
             background-color: $white-white;
-            width: clamp(217px,17.25vw,260px);
-            height: clamp(25px, 4.45vh, 43px);
+            min-width: 217px;
+            height: clamp(25px, 3vh, 43px);
             &:hover {
                 cursor: pointer;
             }
         }
+        label {
+            font-size: clamp(12px, 2vw, 16px);
+        }
     }
+
     .button-more {
         display: flex;
         align-items: center;
@@ -447,6 +458,32 @@ nav.footer-navigation {//menu secondaire
         }
     }
 }
+
+//mise en couleur avec select2
+.select2-container--default .select2-selection--single,
+.select2-container--default .select2-results__option {
+    font-family: "Space Mono", monospace;
+}
+.select2-container--default
+.select2-results__option--highlighted.select2-results__option--selectable {
+    background-color: $red-red !important;
+    color: $black-black;
+}
+.select2-container--default .select2-results__option--selectable:active {
+    background-color: $red-light !important;
+    color: $black-black;
+}
+.select2-container--default
+.select2-results__option--highlighted.select2-results__option--selected {
+    background-color: $red-red !important;
+    color: $white-white;
+}
+.select2-container--default .select2-results__option--selected {
+    background-color: $pink-light !important;
+    color: $black-black;
+}
+
+
 
 /********************LA PAGE SINGLE***********************/
 #main-single {
@@ -824,6 +861,7 @@ nav.footer-navigation {//menu secondaire
             align-items: center;
             .search {
                 align-items: center;
+                width: 265px;
             }
             .sort {
                 flex-direction: column;
